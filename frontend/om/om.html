@@ -44,7 +44,7 @@
     <div class="tilToppenKnapp" onclick="tilTopps()"><span>Til Tops</span><img src="../hovedBilder/mobil/tlf-tilTop-ikon.png" alt="Til Tops"/></div>
 
     <div id="skrollMeny" class="usynlig">
-        <a href="../index.html">
+        <a href="../index.html" tabindex="-1">
             <img src="../hovedBilder/pc/pc-menyLogoBakkabla.png" class="skrollMenyLogo pc" alt="Magasin E logo"/>
             <img src="../hovedBilder/mobil/tlf-logoBakkaBla.png" class="skrollMenyLogo tlf" alt="Magasin E logo"/>
         </a>
@@ -96,27 +96,27 @@
         </a>
         
         <img src="../hovedBilder/pc/pc-menyBakgrunn.png" id="menyBak" class="menyBakgrunn" alt=""/>
-        <a href="../index.html">
+        <a href="../index.html" tabindex="-1">
             <img src="../hovedBilder/pc/pc-menyLogoBakkabla.png" class="menyBakgrunnLogo" alt="Magasin E logo"/> 
         </a>    
         <!-- Knapper i menyen -->
         <div class="menyInnhold"> 
             <div class="menyLeft">
                 <div class="bakka-dropdown">
-                    <div class="paBakka-knapp menyKnapp" onclick="location.href='../bakka/pa-bakka.html';">På Bakka</div>
-                    <div class="femPaBakka-knapp menyKnapp underKnapp" onclick="location.href='../bakka/fem-pa-bakka/katFemBakka.html';">5 på Bakka</div>
+                    <a href="../bakka/pa-bakka.html" class="noLink"><div class="paBakka-knapp menyKnapp">På Bakka</div></a>
+                    <a href="../bakka/fem-pa-bakka/katFemBakka.html" class="noLink"><div class="femPaBakka-knapp menyKnapp underKnapp">5 på Bakka</div></a>
                 </div>
                 
-                <div class="samf-knapp menyKnapp" onclick="location.href='../samfunn/katSamf.html';">Samf. og Debatt</div>
+                <a href="../samfunn/katSamf.html" class="noLink"><div class="samf-knapp menyKnapp">Samf. og Debatt</div></a>
             
             </div>
             <div class="menyRight">
 
-                <div class="kreativt-knapp menyKnapp" onclick="location.href='../kreativt/katKreativt.html';">Kreativt</div>
+                <a href="../kreativt/katKreativt.html" class="noLink"><div class="kreativt-knapp menyKnapp">Kreativt</div></a>
 
                 <div class="om-dropdown">
-                    <div class="omOss-knapp menyKnapp f" onclick="location.href='../om/om.html';">Om Oss</div>
-                    <div class="kontakt-knapp menyKnapp underKnapp" onclick="location.href='../om/kont.html';">Kontakt</div>
+                    <a href="../om/om.html" class="noLink"><div class="omOss-knapp menyKnapp f">Om Oss</div></a>
+                    <a href="../om/kont.html" class="noLink"><div class="kontakt-knapp menyKnapp underKnapp">Kontakt</div></a>
                 </div>
                 
                 <div class="sok-dropdown">
@@ -124,7 +124,7 @@
                     <div class="sokBox" id="mSok">
                         <label for="menySok">Søkefelt</label>
                         <input id="menySok" class="sokInp"/> <!-- input-en til søking -->
-                        <div onclick="sokEtter()" class="sokKnapp"></div>
+                        <div onclick="sokEtter()" class="sokKnapp f"></div>
                     </div>
                 </div>
 
