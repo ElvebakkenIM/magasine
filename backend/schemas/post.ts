@@ -1,3 +1,4 @@
+import { title } from 'process'
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
@@ -9,6 +10,11 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Sub-Title',
       type: 'string',
     }),
     defineField({
@@ -25,8 +31,32 @@ export default defineType({
     defineField({
       name: 'author',
       title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
+      type: 'string',
+    }),
+    defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {
+        list: [
+          { title: 'På Bakka', value: 'pa-bakka' },
+          { title: '5 på Bakka', value: '5-pa-bakka' },
+          { title: 'Samf. & Debatt',  value: 'samf-debatt' },
+          { title: 'Kreativt',  value: 'kreativt' },
+        ],
+      }
+    }),
+    defineField({
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'type',
+      title: 'Type',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'postType'}}],
     }),
     defineField({
       name: 'mainImage',
@@ -35,17 +65,6 @@ export default defineType({
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
     }),
     defineField({
       name: 'body',
@@ -57,12 +76,17 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      author: 'author',
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      const {title, author, media} = selection
+      // return {...selection, subtitle: author && `by ${author}`}
+      return {
+        title: title, // Enklere å lese + endre
+        subtitle: `by ${author}`,
+        media: media,
+      }
     },
   },
 })
