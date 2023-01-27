@@ -8,7 +8,7 @@ export default defineType({
     
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Hi',
       type: 'string',
     }),
     defineField({
