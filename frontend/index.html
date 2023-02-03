@@ -161,16 +161,18 @@
                 <img src="hovedBilder/pc/nyestArtikkelBildeoverlag/pc-graBildeoverlagNyeste.png" class="latestNewsOverlag" alt="">
                 <img src="hovedBilder/pc/nyestArtikkelBildeoverlag/pc-bildeoverlagNyeste-hover.png" class="latestNewsHover" style="width: 80%; position: absolute; bottom: 0px;" alt="">
                 
-                <div class="latestNewsTextBox">
+              <div class="latestNewsTextBox">
                     <div class="latestNewsOverskrift">Overskriftstekst</div>
                     <div class="latestNewsUnderoverskrift">Underoverskriftstekst hei haei!</div>
-                    <div class="articInfo"> <!-- Bruker CSS fra "alle artikklene" -->
+                    <div class="articInfo">  <!-- Bruker CSS fra "alle artikklene"  -->
                         <div style="float: left; display: flex; flex-direction: row;"><div class="articKat"><img src="hovedBilder/-kategori-ikon.png" alt="Kategori">Kategorier</div><div class="articKat"><img src="hovedBilder/-kategori-ikon.png" alt="Kategori">Kategorier</div></div>
                         <div style="float: right;">1. November 2022</div>
                     </div>
                 </div>
             </div>
         </div>
+                     
+
 
 
 
@@ -440,6 +442,25 @@
 
     </div>
 
+
+    <!-- Connecting to sanity -->
+    <script>
+
+        let PROJECT_ID= "bbtj980d"; //Hent din project ID påsanity.io/manage
+        let DATASET= "production";
+        let QUERY = encodeURIComponent('*[_type == "post"]');
+    
+        let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+    
+        fetch(URL)
+        .then((response) =>{
+         return response.json()
+        })
+        .then((data) =>{console.log(data.result[0])
+            const setName= document.getElementById('post');
+            setName.innerHTML= data.result[0].name;
+        })
+        </script>
     
     
 </body>
