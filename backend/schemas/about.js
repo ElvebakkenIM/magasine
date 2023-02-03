@@ -16,6 +16,21 @@ export default defineType({
       type: 'text',
     
     }),
+    defineField({
+      name: 'sorting',
+      title: 'Sort Order (1 = first, 2 = second ...)',
+      type: 'number'
+    })
+  ],
+
+  orderings: [
+    {
+      title: 'As website',
+      name: 'asWebsite',
+      by: [
+        {field: 'sorting', direction: 'asc'}
+      ]
+    }
   ],
 
   preview: {

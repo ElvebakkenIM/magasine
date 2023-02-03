@@ -2,9 +2,14 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'editor',
-  title: 'Editor',
+  title: 'Editors',
   type: 'document',
   fields: [
+    defineField({
+      name: 'willShow',
+      title: 'Show person on website?',
+      type: 'boolean',
+    }),
     defineField({
       name: 'name',
       title: 'Name',
@@ -20,25 +25,22 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'class',
+      title: 'Class',
+      type: 'string',
+    }),
+    defineField({
+      name: 'position',
+      title: 'Position',
+      type: 'string',
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'bio',
-      title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
     }),
   ],
   preview: {
