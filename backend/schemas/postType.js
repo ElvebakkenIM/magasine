@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'about',
-  title: 'About',
+  name: 'post-type',
+  title: '-Post-Type',
   type: 'document',
   fields: [
     defineField({
@@ -11,31 +11,23 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'description',
+      title: 'Description',
       type: 'text',
-    
+    }),
+    defineField({
+        name: 'image',
+        title: 'Image',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
     }),
   ],
-
   preview: {
     select: {
       title: 'title',
+      media: 'image',
     },
   },
 })
-
-
-
-// export default{
-//     name: 'about',
-//     title: 'About',
-//     type: 'document',
-//     fields: [
-//      {  name: 'name',
-//         title: 'Name',
-//         type: 'string'
-// }]}
-
-
-    
