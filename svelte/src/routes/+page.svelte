@@ -1,4 +1,5 @@
 <script>
+    import Header from '$lib/components/header.svelte';
 
     export let data;
     console.log(data.about[0])
@@ -7,14 +8,7 @@
     console.log(author)
     
 </script>
-    
-    
-    
+
+
+<Header cat='hjem'/>
 <h1>Welcome to making Magasine work {author}. Good Luck!!</h1>
-
-
-
-
-
-
-
