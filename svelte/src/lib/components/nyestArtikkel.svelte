@@ -1,10 +1,65 @@
 <script>
+    import catIcon from '$lib/assets/artikkles/-kategori-ikon.png';
 
+    export let artikkle;
+    let ov = artikkle.title;
+    let uov = 'Hah hahahahah ahahha ha hiuhuhhahah haha';
+    let cats = artikkle.categories;
+    let date = '17. Februar 2023';
+
+    let cattexts = [''];
+    for (let cat of cats) {
+        cat === '' ? cats.shift() : '';
+        switch (cat) {
+            case 'pa-bakka':
+                cattexts.push('På Bakka');
+                break;
+            case '5-pa-bakka':
+                cattexts.push('5 på Bakka');
+                break;
+            case 'samf-og-debatt':
+                cattexts.push('Samf. & Debatt');
+                break;
+            case 'kreativt':
+                cattexts.push('Kreativt');
+                break;
+            default:
+                cattexts.push('whhaaa');
+                break;
+        }
+    }
+    cattexts[0] === '' ? cattexts.shift() : '';
+
+    let color1 = '#414042';
+    let color2 = '#414042';
+    if (((cattexts[0] == 'På Bakka' || cattexts[0] == '5 på Bakka') && cattexts[1] == 'Samf. & Debatt') || ((cattexts[1] == 'På Bakka' || cattexts[1] == '5 på Bakka') && cattexts[0] == 'Samf. & Debatt')) {
+        color1 = '#d52127';
+        color2 = '#2891d7';
+    } 
+    else if ((cattexts[0] == 'Samf. & Debatt' && cattexts[1] == 'Kreativt') || (cattexts[1] == 'Samf. & Debatt' && cattexts[0] == 'Kreativt')) {
+        color1 = '#2891d7';
+        color2 = '#ee931d';
+    }
+    else if ((cattexts[0] == 'Kreativt' && (cattexts[1] == 'På Bakka' || cattexts[1] == '5 på Bakka')) || (cattexts[1] == 'Kreativt' && (cattexts[0] == 'På Bakka' || cattexts[0] == '5 på Bakka'))) {
+        color1 = '#ee931d';
+        color2 = '#d52127';
+    }
+
+    else if ((cattexts.length === 1 && cattexts[0] == 'På Bakka') || (cattexts.length === 1 && cattexts[0] == '5 på Bakka')) {
+        color1 = '#d52127';
+        color2 = '#d52127';
+    }
+    else if (cattexts.length === 1 && cattexts[0] == 'Samf. & Debatt') {
+        color1 = '#2891d7';
+        color2 = '#2891d7';
+    }
+    else if (cattexts.length === 1 && cattexts[0] == 'Kreativt') {
+        color1 = '#ee931d';
+        color2 = '#ee931d';
+    }
+    
 
 </script>
-
-
-
 
 <div class="midItem">
 
@@ -12,28 +67,30 @@
         <div class="overskriftTekst"><h3><b>Siste nytt</b></h3></div>
         <div class="latestNewsBox-hiddencontent pic">
 
+            <!-- Standard SVG-overlag -->
             <svg class="latestNewsOverlag" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420.4 539.4">
-                <path style="fill: blue" class="cls-3" d="M1200,539.4H0V267.54s184.48-65.06,433.88-51.95c248.09,13.04,384.19,87.27,384.19,87.27"/>
+                <path style="fill: {color1}" d="M1200,539.4H0V267.54s184.48-65.06,433.88-51.95c248.09,13.04,384.19,87.27,384.19,87.27"/>
                 <g>
-                  <path style="fill: red; opacity: 0.5;" class="cls-2" d="M818.07,302.87s143.52-31.65,261.59,42.99c104.82,66.27,120.34,193.54,120.34,193.54H482.07s101.2-193.54,336-236.53Z"/>
-                  <path style="fill: red;" class="cls-1" d="M818.07,302.87s143.52-31.65,261.59,42.99c104.82,66.27,120.34,193.54,120.34,193.54H655.57s20.48-182.7,162.51-236.53Z"/>
+                  <path style="fill: {color2}; opacity: 0.5;" d="M818.07,302.87s143.52-31.65,261.59,42.99c104.82,66.27,120.34,193.54,120.34,193.54H482.07s101.2-193.54,336-236.53Z"/>
+                  <path style="fill: {color2};" d="M818.07,302.87s143.52-31.65,261.59,42.99c104.82,66.27,120.34,193.54,120.34,193.54H655.57s20.48-182.7,162.51-236.53Z"/>
                 </g>
             </svg>
             
-            <svg class="latestNewsHover" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420.4 539.4">
-                <path class="cls-3" d="M1200,539.4H0V267.54s184.48-65.06,433.88-51.95c248.09,13.04,384.19,87.27,384.19,87.27"/>
-                <g>
-                  <path class="cls-2" d="M818.07,302.87s143.52-31.65,261.59,42.99c104.82,66.27,120.34,193.54,120.34,193.54H482.07s101.2-193.54,336-236.53Z"/>
-                  <path class="cls-1" d="M818.07,302.87s143.52-31.65,261.59,42.99c104.82,66.27,120.34,193.54,120.34,193.54H655.57s20.48-182.7,162.51-236.53Z"/>
-                </g>
+            <!-- Hover SVG-overlag -->
+            <svg class="latestNewsHover" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420.4 539.4">
+                <path d="M0,101.98S164.99,0,403.61,0s375.27,101.98,375.27,101.98c0,0,71.75-52.98,163.53-32.59,94.17,20.93,107.73,101.93,107.73,101.93,0,0,195.22-18.93,304.51,117.71,79.54,99.45,64.64,250.37,64.64,250.37H0V101.98Z"/>
             </svg>
             
-        <div class="latestNewsTextBox">
-                <div class="latestNewsOverskrift">Overskriftstekst</div>
-                <div class="latestNewsUnderoverskrift">Underoverskriftstekst hei haei!</div>
+            <div class="latestNewsTextBox">
+                <div class="latestNewsOverskrift">{ov}</div>
+                <div class="latestNewsUnderoverskrift">{uov}</div>
                 <div class="articInfo">  <!-- Bruker CSS fra "alle artikklene"  -->
-                    <div style="float: left; display: flex; flex-direction: row;"><div class="articKat"><img src="hovedBilder/-kategori-ikon.png" alt="Kategori">Kategorier</div><div class="articKat"><img src="hovedBilder/-kategori-ikon.png" alt="Kategori">Kategorier</div></div>
-                    <div style="float: right;">1. November 2022</div>
+                    <div style="float: left; display: flex; flex-direction: row;">
+                        {#each cattexts as cat}
+                        <div class="articKat"><img src={catIcon} alt="Kategori">{cat}</div>
+                        {/each}
+                    </div>
+                    <div style="float: right;">{date}</div>
                 </div>
             </div>
         </div>
@@ -61,6 +118,14 @@
         bottom: 0;
         width: 100%;
         font-size: 1.25vw;
+    }.articKat {
+        padding-left: 1.5vw;
+        position: relative;
+    }.articKat img {
+        width: 1.75vw;
+        opacity: .25;
+        position: absolute;
+        left: .75vw;
     }
 
 
@@ -80,15 +145,16 @@
     }
 
     .latestNewsOverlag {
-        width: 100%; 
+        width: 90%; 
         position: absolute; 
         bottom: 0px;
     }
     .latestNewsHover {
-        width: 100%; 
+        width: 85%; 
         position: absolute; 
         bottom: 0px;
 
+        fill: #414042;
         opacity: 0;
     }.latestNewsBox-hiddencontent:hover .latestNewsHover {
         opacity: 1;
