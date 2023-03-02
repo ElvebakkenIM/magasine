@@ -95,8 +95,8 @@
             <a href="/" class="noLink"><div class="menyKnapp" style="--on: {onK}">Kreativt</div></a>
 
             <div class="dropdown">
-                <a href="/" class="noLink"><div style="--on: {onOm}" class="menyKnapp">Om Oss</div></a>
-                <a href="/" class="noLink"><div style="--on: {onKo}" class="dropKnapp menyKnapp underKnapp">Kontakt</div></a>
+                <a href="/om" class="noLink"><div style="--on: {onOm}" class="menyKnapp">Om Oss</div></a>
+                <a href="/om" class="noLink"><div style="--on: {onKo}" class="dropKnapp menyKnapp underKnapp">Kontakt</div></a>
             </div>
             
             <Sok />

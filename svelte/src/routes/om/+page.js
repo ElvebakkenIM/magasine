@@ -8,11 +8,11 @@ const client = sanityClient({
   });
 
   export async function load({ }) {
-    const data = await client.fetch(`*[_type == "post"]`);
+    const data = await client.fetch(`*[_type == "about"]`);
   
     if (data) {
       return {
-        post: data
+        about: data
       };
     }
     return {

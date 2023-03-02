@@ -13,7 +13,7 @@
         <div class="overskriftTekst"><h3><b>Alle artikkler</b></h3></div>
 
         {#each Array(articData.length-1) as _, i}
-        <Artikkel artikkle={articData[i+1]}/>
+        <Artikkel artikkle={articData[i+1]}/> <!--TODO: Send kun passende til kategorien/siden man er på -->
         {/each}
 
     </div>
