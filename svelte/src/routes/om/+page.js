@@ -8,11 +8,18 @@ const client = sanityClient({
   });
 
   export async function load({ }) {
-    const data = await client.fetch(`*[_type == "about"]`);
+    const about = await client.fetch(`*[_type == "about"]`);
+    const editors = await client.fetch(`*[_type == "editor" && willShow == true]`);
   
-    if (data) {
+    if (about) {
+      if (editors) {
+        return {
+          about: about,
+          editor: editors
+        };
+      }
       return {
-        about: data
+        about: about
       };
     }
     return {
