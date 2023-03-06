@@ -33,8 +33,8 @@
 </script>
 
 
-<Header cat='hjem'/>
-<ScrollMenu cat='hjem'/>
+<Header/>
+<ScrollMenu/>
 
 <NyestArtikkel artikkle={newest}/>
 

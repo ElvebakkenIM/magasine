@@ -4,8 +4,8 @@
 	import { fade } from 'svelte/transition';
 
 
-    export let cat = 'hjem';
-    console.log(cat);
+    import {page} from '$app/stores';
+    let onURL = $page.url.pathname;
 
     let onFill = '#4A9CFF;';
 
@@ -15,29 +15,30 @@
     let onK = '#414042';
     let onOm = '#414042';
     let onKo = '#414042';
-    switch(cat) {
-    case 'bakka':
+
+    switch(onURL) {
+    case '/bakka':
         onB = '#FF3333';
         onFill = '#FF3333';
         break;
-    case 'fem':
+    case '/bakka/fem-pa-bakka':
         onfB = '#FF3333';
         onFill = '#FF3333';
         break;
-    case 'samf':
+    case '/samf-og-debatt':
         onS = '#2E9DE8';
         onFill = '#2E9DE8';
         break;
-    case 'krea':
-        onK = '#FFA727;';
+    case '/kreativt':
+        onK = '#FFA727';
         onFill = '#FFA727';
         break;
 
-    case 'om':
+    case '/om':
         onOm = '#4A9CFF;';
         onFill = '#4A9CFF';
         break;
-    case 'kont':
+    case '/om/kontakt':
         onKo = '#4A9CFF;';
         onFill = '#4A9CFF';
         break;
@@ -84,9 +85,9 @@
             <a href="/bakka" class="noLink"><div class="dropKnapp skrollUnderKnapp" style="--on: {onfB}">5 på Bakka</div></a>
         </div>
         
-        <a href="/" class="noLink"><div style="--on: {onS}" class="menyKnapp">Samf. og Debatt</div></a>
+        <a href="/samf-og-debatt" class="noLink"><div style="--on: {onS}" class="menyKnapp">Samf. og Debatt</div></a>
         
-        <a href="/" class="noLink"><div class="menyKnapp" style="--on: {onK}">Kreativt</div></a>
+        <a href="/kreativt" class="noLink"><div style="--on: {onK}" class="menyKnapp">Kreativt</div></a>
 
         <div class="dropdown">
             <a href="/om" class="noLink"><div style="--on: {onOm}" class="menyKnapp">Om Oss</div></a>

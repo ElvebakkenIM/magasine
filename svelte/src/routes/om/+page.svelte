@@ -3,6 +3,7 @@
     import Footer from 'lib//components/footer.svelte';
     import HvemErVi from 'lib//components/hvemErVi.svelte';
     import OmBoks from 'lib//components/omBoks.svelte';
+    import ScrollMenu from 'lib//components/scrollMenu.svelte';
     import TilTops from 'lib//components/tilTops.svelte';
 
 
@@ -29,8 +30,8 @@
 
 </script>
 
-
-<Header cat='om'/>
+<ScrollMenu/>
+<Header/>
 
 {#each Array(infoSorted.length) as _, i}
     <OmBoks info={infoSorted[i]}/>

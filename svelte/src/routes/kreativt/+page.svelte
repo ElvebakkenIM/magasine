@@ -16,18 +16,6 @@
     let postData = data.post;
     let newest = data.post[0];
 
-    /**
-     * @type {any}
-     */
-    let newest5paBakka;
-    for (let post of data.post) {
-        if (post.categories.includes("5-pa-bakka")) {
-            newest5paBakka = post;
-            break;
-        }
-    }
-
-
     let showMore = 0;
 </script>
 
@@ -36,8 +24,6 @@
 <Header/>
 
 <NyestArtikkel artikkle={newest}/>
-
-<Nyeste5paBakka info={newest5paBakka}/>
 
 <ArtikkelFelt placing='^' postdata={postData}/>
 <Kategorier/>
