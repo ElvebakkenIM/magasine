@@ -1,5 +1,6 @@
 <script>
     import Header from '$lib/components/header.svelte';
+    import ScrollMenu from 'lib//components/scrollMenu.svelte';
 
 
     // export let data;
@@ -10,6 +11,7 @@
 </script>
 
 
+<ScrollMenu cat='bakka'/>
 <Header cat='bakka'/>
 
 <!-- <h1>Welcome to making Magasine work {author}. Good Luck!!</h1> --> 
