@@ -32,6 +32,17 @@ export default defineType({
         hotspot: true,
       },
     }),
+
+    defineField({
+      name: 'Caption',
+      title: 'Caption',
+      type: 'string',
+      options: {
+        hotspot: true,
+      },
+    }),
+
+
     defineField({
       name: 'categories',
       title: 'Categories',
@@ -49,7 +60,7 @@ export default defineType({
     defineField({
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime',
+      type: 'date',
     }),
     defineField({
       name: 'body',
