@@ -3,6 +3,7 @@
 
     export let placing;
     export let showMore = 0;
+    export let builder;
     
     export let postdata = [''];
     let articData = postdata;
@@ -32,7 +33,7 @@
         {#each {length: articShowLength+showMore} as _, i}
         {#if i < articData.length-1-shift}
 
-        <Artikkel artikkle={articData[i+1+shift]}/> <!--TODO: Send kun passende til kategorien/siden man er på -->
+        <Artikkel builder={builder} artikkle={articData[i+1+shift]}/> <!--TODO: Send kun passende til kategorien/siden man er på -->
         
         {/if}
         {/each}

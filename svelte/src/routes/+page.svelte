@@ -16,9 +16,11 @@
     let postData = data.post;
     let newest = data.post[0];
 
-    /**
-     * @type {any}
-     */
+    // let img = data.post[7].mainImage.asset._ref;
+
+    let builder = data.img;
+
+    
     let newest5paBakka;
     for (let post of data.post) {
         if (post.categories.includes("5-pa-bakka")) {
@@ -42,9 +44,9 @@
 
 <Nyeste5paBakka info={newest5paBakka}/>
 
-<ArtikkelFelt placing='^' postdata={postData}/>
+<ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
 <InspText/>
-<ArtikkelFelt bind:showMore={showMore} placing='v' postdata={postData}/>
+<ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
 
 <MoreButton bind:showMore={showMore}/>
 

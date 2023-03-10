@@ -1,4 +1,5 @@
-import sanityClient from "@sanity/client"
+import sanityClient from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
 const client = sanityClient({
     projectId: "bbtj980d",
@@ -9,10 +10,12 @@ const client = sanityClient({
 
   export async function load({ }) {
     const data = await client.fetch(`*[_type == "post"]`);
+    const imgBuilder = imageUrlBuilder(client);
   
     if (data) {
       return {
-        post: data
+        post: data,
+        img: imgBuilder
       };
     }
     return {

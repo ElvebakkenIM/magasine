@@ -12,6 +12,9 @@
 
 
     export let data;
+
+    let builder = data.img;
+
     
     let postData = data.post;
     let newest = data.post[0];
@@ -25,10 +28,10 @@
 
 <NyestArtikkel artikkle={newest}/>
 
-<ArtikkelFelt placing='^' postdata={postData}/>
+<ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
 <Kategorier/>
 <InspText/>
-<ArtikkelFelt bind:showMore={showMore} placing='v' postdata={postData}/>
+<ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
 
 <MoreButton bind:showMore={showMore}/>
 

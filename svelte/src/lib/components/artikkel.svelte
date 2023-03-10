@@ -1,12 +1,20 @@
 
 <script>
     import catIcon from '$lib/assets/artikkles/-kategori-ikon.png';
+    import placeholder from '$lib/assets/artikkles/placeholder.png';
+
+    export let builder;
+    function urlFor(source) {
+        return builder.image(source);
+    }
 
     export let artikkle;
     let ov = artikkle.title;
     let uov = 'Hah hahahahah ahahha ha hiuhuhhahah haha ah hahahahah ahahha ha';
     let cats = artikkle.categories;
-    let date = '17. Februar 2023';
+    let date = artikkle.publishedAt;
+
+    console.log();
 
     let cattexts = [''];
     for (let cat of cats) {
@@ -60,10 +68,11 @@
     }
 </script>
 
-
+<a href="/bakka/#/{artikkle.slug.current}">
 <div class="gridItemArtic pic"><div class="articBox pic">
-    <img src="" alt=""> <!--TODO Dette er bildet, OBS: Lag artikkelene til bildestørrelse -->
 
+
+    
     <svg class="articImg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
         <path style="fill: {color1};" d="M1200,391.43H0V118.96S196.07,52.7,442.58,67.81c260.91,16,427.91,110.45,427.91,110.45"/>
         <g>
@@ -88,7 +97,15 @@
             <div style="float: right;">{date}</div>
         </div>
     </div>
-</div></div>
+
+
+    {#if artikkle.hasOwnProperty('mainImage')}
+    <img style="width: 100%" src={urlFor(artikkle.mainImage.asset._ref).url()} alt=""/>
+    {:else}
+    <img style="width: 100%" src={placeholder} alt=""/>
+    {/if}
+    <!--TODO Dette er bildet, OBS: Lag artikkelene til bildestørrelse -->
+</div></div></a>
 
 <style>
     .articImg {
