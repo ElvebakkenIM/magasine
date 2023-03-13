@@ -6,10 +6,13 @@
     import hjem from '$lib/assets/header/-hjem-ikon.png';
     import menyBg from '$lib/assets/header/pc-menyBakgrunn.png';
     import bakLogo from '$lib/assets/header/bakLogo.png';
+    import EHamburger from '$lib/assets/header/tlf-hamburgerMeny-ikon.png';
+    import XHamburger from '$lib/assets/header/tlf-skulHamburgerMeny-ikon.png';
 
 
 
     import {page} from '$app/stores';
+    import TlfMeny from './tlf-meny.svelte';
     let onURL = $page.url.pathname;
 
     let onFill = '#4A9CFF;';
@@ -49,10 +52,22 @@
     default:
         break;
     }
+
+
+    let innerWidth = 0;
+    let innerHeight = 0;
+
+
+
+    let hamOn = false;
+    function hamMeny() {
+        hamOn = !hamOn;
+    }
+
 </script>
 
 
-<div class="header" style="margin-bottom: 15vw;"> 
+<div class="header" style="margin-bottom: {innerWidth <= 775 ? '30' : '15'}vw; height: {innerWidth <= 775 ? '190' : '250'}px;"> 
     <div class="headImg">
         <img src={topBg} style="height: 100%;" alt="">
     </div>
@@ -61,10 +76,10 @@
     </a>
     
     <!--* Meny -->
-    <img src={menyBg} id="menyBak" class="menyBakgrunn"  alt=""/>
+    <img src={menyBg} id="menyBak" class="menyBakgrunn" style="width:{innerWidth <= 775 ? '150' : '100'}vw;" alt=""/>
     <a href="/" tabindex="-1">
-        <img src={bakLogo} class="menyBakgrunnLogo" alt="Magasin E logo"/> 
-        <svg class="menyBakgrunnLogo" style="--onFill:{onFill}" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950.02 301.7">
+        <img src={bakLogo} class="{innerWidth <= 775 ? 'tlf-menyBakgrunnLogo' : 'menyBakgrunnLogo'}" alt="Magasin E logo"/> 
+        <svg class="{innerWidth <= 775 ? 'tlf-menyBakgrunnLogo' : 'menyBakgrunnLogo'}" style="--onFill:{onFill}" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950.02 301.7">
         <g>
             <path class="cls-1" d="M157.61,255.98l-27.77,.85,13.63-112.59-62.54,107.52-9.54,.42-30.5-106.25-13.8,110.27H0L20.45,89.2l33.57-.63,30.33,105.61,60.83-104.98,33.23,.21-20.79,166.57Z"/>
             <path class="cls-1" d="M253.05,256.19h-24.54l2.39-17.78c-7.84,12.49-18.4,19.89-30.84,19.89-20.45,0-33.74-19.05-33.74-47.62,0-37.67,19.94-68.57,49.76-68.57,10.73,0,19.6,6.35,24.03,17.78l3.07-20.11,25.9,.85-16.02,115.56Zm-35.1-83.6c-14.82,0-23.68,16.72-23.68,34.92,0,13.12,5.62,22.65,16.02,22.65,14.82,0,24.88-17.14,24.88-33.86,0-13.12-5.62-23.7-17.21-23.7Z"/>
@@ -81,18 +96,20 @@
         </svg>
     </a>    
     <!-- Knapper i menyen -->
-    <div class="menyInnhold"> 
+    <div class="menyInnhold" style="top: {innerWidth <= 775 ? '190' : '250'}px;"> 
         <div class="menyLeft">
+            {#if !(innerWidth <= 775)}
             <div class="dropdown">
                 <a href="/bakka" class="noLink"><div class="menyKnapp" style="--on: {onB}">På Bakka</div></a>  <!-- TODO role: og tabindex: -->
                 <a href="/bakka" class="noLink"><div class="dropKnapp menyKnapp underKnapp" style="--on: {onfB}">5 på Bakka</div></a>
             </div>
             
             <a href="/samf-og-debatt" class="noLink"><div style="--on: {onS}" class="menyKnapp">Samf. og Debatt</div></a>
-        
+            {/if}
         </div>
         <div class="menyRight">
 
+            {#if !(innerWidth <= 775)}
             <a href="/kreativt" class="noLink"><div class="menyKnapp" style="--on: {onK}">Kreativt</div></a>
 
             <div class="dropdown">
@@ -100,16 +117,34 @@
                 <a href="/om" class="noLink"><div style="--on: {onKo}" class="dropKnapp menyKnapp underKnapp">Kontakt</div></a>
             </div>
             
-            <Sok />
-
-            <div>
-                <img src="" class="hamburgerMeny tlf hamMenyE" alt=""/>
-                <img src="" class="hamburgerMeny tlf hamMenyX" style="width: 10vw;" alt=""/>
+            <!-- <Sok /> -->
+            
+            {:else}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <div on:click={hamMeny}>
+                {#if hamOn}
+                <img src={XHamburger} class="hamburgerMeny tlf hamMenyX" style="width: 10vw;" alt=""/>
+                {:else}
+                <img src={EHamburger} class="hamburgerMeny tlf hamMenyE" alt=""/>
+                {/if}
             </div>
+            {/if}
         </div>
     </div>
 </div>
 
+
+
+
+{#if (innerWidth <= 775) && hamOn}
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="darkenScreen" on:click={hamMeny}>
+    <TlfMeny/>
+</div>
+{/if}
+
+
+<svelte:window bind:innerWidth bind:innerHeight />
 
 <style>
     div {
@@ -120,7 +155,6 @@
 
     .header {
         width: 100vw;
-        height: 250px;
         background-color: white;
         position: relative;
     }
@@ -134,9 +168,10 @@
 
     .menyBakgrunn {
         position: absolute; 
-        width: 100vw; 
         top: 100%;
     }
+
+
     .menyBakgrunnLogo {
         position: absolute; 
         z-index: 1;
@@ -146,12 +181,20 @@
         transform: translateY(-65%);
 
         fill: var(--onFill, #4A9CFF);
+    } .tlf-menyBakgrunnLogo {
+        position: absolute; 
+        z-index: 1;
+        width: 30vw; 
+        top: 105%;
+        margin-left: 7.5vw;
+
+        fill: var(--onFill, #4A9CFF);
     }
+
 
     .menyInnhold {
         width: 98vw;
         position: absolute;
-        top: 250px;
         padding: 1vw;
     }.menyLeft {
         float: left; 
@@ -192,5 +235,31 @@
         display: block;
     }.dropKnapp {
         display: none;
+    }
+
+
+
+
+
+
+
+    .hamburgerMeny {
+        width: 13vw;
+        top: 3vw;
+        right: 4vw;
+        position: absolute;
+        cursor: pointer;
+    }
+
+
+
+    .darkenScreen {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.33);
+        z-index: 10;
+        left: 0;
+        top: 0;
     }
 </style>

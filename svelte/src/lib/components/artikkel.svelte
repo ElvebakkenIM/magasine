@@ -14,30 +14,33 @@
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
 
-    console.log();
+    console.log(cats)
 
-    let cattexts = [''];
-    for (let cat of cats) {
-        cat === '' ? cats.shift() : '';
-        switch (cat) {
-            case 'pa-bakka':
-                cattexts.push('På Bakka');
-                break;
-            case '5-pa-bakka':
-                cattexts.push('5 på Bakka');
-                break;
-            case 'samf-og-debatt':
-                cattexts.push('Samf. & Debatt');
-                break;
-            case 'kreativt':
-                cattexts.push('Kreativt');
-                break;
-            default:
-                cattexts.push('whhaaa');
-                break;
+    let cattexts = [];
+    if (cats.length != 0) { //TODO
+        for (let cat of cats) {
+            cat === '' ? cats.shift() : '';
+            switch (cat) {
+                case 'pa-bakka':
+                    cattexts.push('På Bakka');
+                    break;
+                case '5-pa-bakka':
+                    cattexts.push('5 på Bakka');
+                    break;
+                case 'samf-og-debatt':
+                    cattexts.push('Samf. & Debatt');
+                    break;
+                case 'kreativt':
+                    cattexts.push('Kreativt');
+                    break;
+                default:
+                    cattexts.push('whhaaa');
+                    break;
+            }
         }
     }
-    cattexts[0] === '' ? cattexts.shift() : '';
+    console.log(cats, cattexts, cats.length)
+    // cattexts[0] === '' ? cattexts.shift() : '';
 
     let color1 = '#414042';
     let color2 = '#414042';
@@ -90,9 +93,9 @@
         <div class="arcticUnderoverskrift">{uov}</div>
         <div class="articInfo">
             <div style="float: left; display: flex; flex-direction: row;">
-                {#each cattexts as cat}
+                {#if cattexts.length != 0}{#each cattexts as cat} <!--TODO-->
                 <div class="articKat"><img src={catIcon} alt="Kategori">{cat}</div>
-                {/each}
+                {/each}{/if}
             </div>
             <div style="float: right;">{date}</div>
         </div>

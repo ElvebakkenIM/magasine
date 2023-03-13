@@ -3,8 +3,12 @@
 
 	import { fade } from 'svelte/transition';
 
+    // Bilder
+    import EHamburger from '$lib/assets/header/tlf-hamburgerMeny-ikon.png';
+    import XHamburger from '$lib/assets/header/tlf-skulHamburgerMeny-ikon.png';
 
     import {page} from '$app/stores';
+    import TlfMeny from "./tlf-meny.svelte";
     let onURL = $page.url.pathname;
 
     let onFill = '#4A9CFF;';
@@ -48,17 +52,23 @@
 
 
 
-    /**
-     * @type {number}
-     */
+    let innerWidth = 0;
+    let innerHeight = 0;
+
+
     let y;
+
+    let hamOn = false;
+    function hamMeny() {
+        hamOn = !hamOn;
+    }
 </script>
 
 
 
 
 {#if y >= 300}
-<div id="skrollMeny" in:fade out:fade>
+<div id="skrollMeny" style="{innerWidth <= 775 ? 'bottom: 0;' : 'top: 0;'}" in:fade out:fade>
     <a href="index.html" tabindex="-1">
         <svg class="skrollMenyLogo" style="--onFill:{onFill}" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950.02 301.7">
             <g>
@@ -79,7 +89,7 @@
 
     <div class="menyRight" style="padding-top: 12.5px;"> 
 
-
+        {#if !(innerWidth <= 775)}
         <div class="dropdown">
             <a href="/bakka" class="noLink"><div class="menyKnapp" style="--on: {onB}">På Bakka</div></a>  <!-- TODO role: og tabindex: -->
             <a href="/bakka" class="noLink"><div class="dropKnapp skrollUnderKnapp" style="--on: {onfB}">5 på Bakka</div></a>
@@ -94,17 +104,31 @@
             <a href="/om" class="noLink"><div style="--on: {onKo}" class="dropKnapp skrollUnderKnapp">Kontakt</div></a>
         </div>
 
-        <Sok/>
+        <!-- <Sok/> -->
 
-        <div>
-            <img src="" class="hamburgerMeny tlf hamMenyE" alt=""/>
-            <img src="" class="hamburgerMeny tlf hamMenyX" style="width: 10vw;" alt=""/>
+        {:else}
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div on:click={hamMeny}>
+            {#if hamOn}
+            <img src={XHamburger} class="hamburgerMeny tlf hamMenyX" style="width: 10vw;" alt=""/>
+            {:else}
+            <img src={EHamburger} class="hamburgerMeny tlf hamMenyE" alt=""/>
+            {/if}
         </div>
+        {/if}
 
     </div>
 </div>
 {/if}
-<svelte:window bind:scrollY={y}/>
+
+{#if (innerWidth <= 775) && hamOn}
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="darkenScreen" on:click={hamMeny}>
+    <TlfMeny/>
+</div>
+{/if}
+
+<svelte:window bind:scrollY={y} bind:innerWidth bind:innerHeight/>
 
 
 
@@ -125,7 +149,6 @@
         width: 100%; 
         height: 75px; 
         padding: 0; 
-        top: 0;
         background-color: #414042; 
         position: fixed; 
         z-index: 2;
@@ -181,6 +204,27 @@
         display: block;
     }.dropKnapp {
         display: none;
+    }
+
+
+    .hamburgerMeny {
+        width: 13vw;
+        top: 3vw;
+        right: 4vw;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    
+
+    .darkenScreen {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.33);
+        z-index: 10;
+        left: 0;
+        top: 0;
     }
 </style>
 
