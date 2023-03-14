@@ -1,6 +1,5 @@
-import sanityClient from "@sanity/client";
+import sanityClient from "@sanity/client"
 import imageUrlBuilder from "@sanity/image-url";
-
 
 const client = sanityClient({
     projectId: "bbtj980d",
@@ -9,9 +8,8 @@ const client = sanityClient({
     useCdn: false,
   });
 
-
   export async function load({ }) {
-    const data = await client.fetch(`*[_type == "post"]`);
+    const data = await client.fetch(`*[_type == "post" && categories match "samf-og-debatt"]`);
     const imgBuilder = imageUrlBuilder(client);
   
     if (data) {
@@ -25,7 +23,5 @@ const client = sanityClient({
       body: new Error("Internal Server Error")
     };
   }
-
-  
 
  
