@@ -1,12 +1,14 @@
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
+
 const client = sanityClient({
     projectId: "bbtj980d",
     dataset: "production",
     apiVersion: "2023-01-30",
     useCdn: false,
   });
+
 
   export async function load({ }) {
     const data = await client.fetch(`*[_type == "post"]`);
@@ -23,5 +25,7 @@ const client = sanityClient({
       body: new Error("Internal Server Error")
     };
   }
+
+  
 
  
