@@ -11,7 +11,8 @@
     import ScrollMenu from 'lib//components/scrollMenu.svelte';
 
     export let data;
-    console.log(data.post[0])
+    console.log("YOLO",data.post[0])
+
 
     let postData = data.post;
     let newest = data.post[0];
@@ -20,18 +21,13 @@
 
     let builder = data.img;
 
-    let author = data.about[0].author;
+    let author = data.post[0].author;
     console.log(author)
 
-    let body = data.about[0].body
+    let body = data.post[0].body
 
-    let img = data.about[0].mainImage.asset._ref
+    let img = data.post[0].mainImage.asset._ref
     console.log(img)
-
-
-    
-</script>
-   
     
     let newest5paBakka;
     for (let post of data.post) {
