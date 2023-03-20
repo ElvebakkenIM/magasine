@@ -1,6 +1,8 @@
 <script>
     export let info;
     let title = info.title;
+
+    let innerWidth = 0;
 </script>
 
 
@@ -8,11 +10,13 @@
 <div class="midItem">
 
     <a href="/bakka" class="noLink"><div class="femPaBakkaBox">
-        <div class="overskriftTekst"><h3><b>5 på Bakka</b></h3></div>
+        <div class="overskriftTekst" style="font-size: {innerWidth <= 775 ? '12.5' : '20'}px;"><h3><b>5 på Bakka</b></h3></div>
         {title}
     </div></a>
 
 </div>
+
+<svelte:window bind:innerWidth/>
 
 
 <style>
@@ -20,11 +24,9 @@
         position: absolute; 
         top: -30px;
         left: 0;
-        font-size: 20px;
         color: #414042;
     }h3 { /* No extra effects for h3 (kun der for universel utforming) */
         display: inline;
-        font-size: 20px;
     }
 
     .femPaBakkaBox {

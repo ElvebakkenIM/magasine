@@ -9,6 +9,9 @@
     import Nyeste5paBakka from 'lib//components/nyeste5paBakka.svelte';
     import MoreButton from 'lib//components/moreButton.svelte';
     import ScrollMenu from 'lib//components/scrollMenu.svelte';
+    import TlfArtikkel from 'lib//components/tlf-artikkel.svelte';
+    import TlfNyestArtikkel from 'lib//components/tlf-nyestArtikkel.svelte';
+    import TlfMoreButton from 'lib//components/tlf-moreButton.svelte';
 
     export let data;
     console.log(data.post[0])
@@ -31,6 +34,9 @@
 
 
     let showMore = 0;
+
+    let innerWidth = 0;
+    let innerHeight = 0;
     
 </script>
 
@@ -38,7 +44,11 @@
 <Header/>
 <ScrollMenu/>
 
+{#if innerWidth <= 775}
+<TlfNyestArtikkel artikkle={newest}/>
+{:else}
 <NyestArtikkel artikkle={newest}/>
+{/if}
 
 <Kategorier/>
 
@@ -48,10 +58,16 @@
 <InspText/>
 <ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
 
+{#if innerWidth <= 775}
+<TlfMoreButton bind:showMore={showMore}/>
+{:else}
 <MoreButton bind:showMore={showMore}/>
+{/if}
 
 
 <Footer/>
 
 
 <TilTops/>
+
+<svelte:window bind:innerWidth bind:innerHeight/>

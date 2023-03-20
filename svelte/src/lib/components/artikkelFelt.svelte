@@ -1,5 +1,6 @@
 <script>
     import Artikkel from "./artikkel.svelte";
+    import TlfArtikkel from "./tlf-artikkel.svelte";
 
     export let placing;
     export let showMore = 0;
@@ -9,31 +10,50 @@
     let articData = postdata;
     console.log(articData)
     
-    let articShowLength = 6;
-
-    // if (placing == '^' && articData.length-1 < 6) {
-    //     articShowLength = articData.length-1;
-    // } 
     
-    let shift = 0; // To show the 7th++ article if its the second component used
-    if (placing == 'v') {
-        // if (articData.length-1 < 12 && articData.length-1 >= 6) {
-        //     articShowLength = (articData.length-1) - 6;
-        // }
-        shift = 6;
-    }
-</script>
+    // if (placing == '^' && articData.length-1 < 6) {
+        //     articShowLength = articData.length-1;
+        // } 
+        
+        
+        let innerWidth = 0;
+        let innerHeight = 0;
+        
+        let articShowLength = 6;
+        $: innerWidth, changeShowLengthOnScale();
+        
+        function changeShowLengthOnScale() {
+            if (innerWidth <= 775) {
+                articShowLength = 4;
+            } else {
+                articShowLength = 6;
+            }
+        }
+
+        let shift = 0; // To show the 7th++ article if its the second component used
+        $: innerWidth, isBottomFixOnScale();
+
+        function isBottomFixOnScale() {
+            if (placing == 'v') {
+                shift = articShowLength;
+            }
+        }
+        </script>
 
 
 <div class="midItem">
 
-    <div class="gridContArticles" style="margin-top: 15vw;">
-        <div class="overskriftTekst"><h3><b>Alle artikkler</b></h3></div>
+    <div class="gridContArticles" style="margin-top: 15vw; grid-template-columns: {innerWidth > 775 ? 'auto' : ''} auto;">
+        {#if placing != 'v'}<div class="overskriftTekst" style="font-size: {innerWidth <= 775 ? '12.5' : '20'}px;"><h3><b>Alle artikkler</b></h3></div>{/if}
 
         {#each {length: articShowLength+showMore} as _, i}
         {#if i < articData.length-1-shift}
 
-        <Artikkel builder={builder} artikkle={articData[i+1+shift]}/> <!--TODO: Send kun passende til kategorien/siden man er på -->
+        {#if innerWidth <= 775}
+        <TlfArtikkel builder={builder} artikkle={articData[i+1+shift]}/>
+        {:else}
+        <Artikkel builder={builder} artikkle={articData[i+1+shift]}/>
+        {/if}
         
         {/if}
         {/each}
@@ -42,23 +62,22 @@
 
 </div>
 
+<svelte:window bind:innerWidth bind:innerHeight/>
+
 
 <style>
     .overskriftTekst {
         position: absolute; 
         top: -30px;
         left: 0;
-        font-size: 20px;
         color: #414042;
     }h3 { /* No extra effects for h3 (kun der for universel utforming) */
         display: inline;
-        font-size: 20px;
     }
 
     .gridContArticles {
         display: grid;
         grid-gap: 70px;
-        grid-template-columns: auto auto;
         width: 100%;
         position: relative;
         

@@ -67,7 +67,7 @@
         <div class="overskriftTekst"><h3><b>Siste nytt</b></h3></div>
         <div class="latestNewsBox-hiddencontent pic">
 
-            <!-- Standard SVG-overlag -->
+            
             <svg class="latestNewsOverlag" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420.4 539.4">
                 <path style="fill: {color1}" d="M1200,539.4H0V267.54s184.48-65.06,433.88-51.95c248.09,13.04,384.19,87.27,384.19,87.27"/>
                 <g>
@@ -76,15 +76,11 @@
                 </g>
             </svg>
             
-            <!-- Hover SVG-overlag -->
-            <svg class="latestNewsHover" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420.4 539.4">
-                <path d="M0,101.98S164.99,0,403.61,0s375.27,101.98,375.27,101.98c0,0,71.75-52.98,163.53-32.59,94.17,20.93,107.73,101.93,107.73,101.93,0,0,195.22-18.93,304.51,117.71,79.54,99.45,64.64,250.37,64.64,250.37H0V101.98Z"/>
-            </svg>
-            
+
             <div class="latestNewsTextBox">
                 <div class="latestNewsOverskrift">{ov}</div>
                 <div class="latestNewsUnderoverskrift">{uov}</div>
-                <div class="articInfo">  <!-- Bruker CSS fra "alle artikklene"  -->
+                <div class="articInfo">
                     <div style="float: left; display: flex; flex-direction: row;">
                         {#each cattexts as cat}
                         <div class="articKat"><img src={catIcon} alt="Kategori">{cat}</div>
@@ -106,20 +102,20 @@
         position: absolute; 
         top: -30px;
         left: 0;
-        font-size: 20px;
+        font-size: 12.5px;
         color: #414042;
     }h3 { /* No extra effects for h3 (kun der for universel utforming) */
         display: inline;
-        font-size: 20px;
     }
 
     .articInfo {
         position: absolute;
         bottom: 0;
         width: 100%;
-        font-size: 1.25vw;
+        font-size: 2vw;
     }.articKat {
         padding-left: 1.5vw;
+        padding-right: 2vw;
         position: relative;
     }.articKat img {
         width: 1.75vw;
@@ -145,43 +141,26 @@
     }
 
     .latestNewsOverlag {
-        width: 90%; 
+        width: 180%; 
+        left: -3.5%;
         position: absolute; 
         bottom: 0px;
-    }
-    .latestNewsHover {
-        width: 85%; 
-        position: absolute; 
-        bottom: 0px;
-
-        fill: #414042;
-        opacity: 0;
-    }.latestNewsBox-hiddencontent:hover .latestNewsHover {
-        opacity: 1;
     }
 
     .latestNewsTextBox {
         margin: 2%;
-        width: 70%;
-        height: 22.5%;
+        width: 95%;
+        height: 47.5%;
         color: white;
 
         position: absolute;
         bottom: 0;
     }
     .latestNewsOverskrift {
-        font-size: 5.5vw;
+        font-size: 6vw;
     }.latestNewsUnderoverskrift {
-        opacity: 0;
-        font-size: 3vw;
-    }
-    .latestNewsBox-hiddencontent:hover .latestNewsTextBox {
-        height: 35%;
-    }.latestNewsBox-hiddencontent:hover .latestNewsUnderoverskrift {
         opacity: 1;
-    }.latestNewsBox-hiddencontent:hover .latestNewsOverskrift {
-        font-size: 5vw;
-    }.latestNewsBox-hiddencontent:hover .articInfo {
-        opacity: 0;
+        font-size: 3.5vw;
     }
+    
 </style>

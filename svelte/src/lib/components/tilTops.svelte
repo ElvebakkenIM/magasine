@@ -30,22 +30,24 @@
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Endre 0 om man ønsker å endre hvor den ender
     }
 
+    let innerWidth = 0;
 </script>
 
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="tilToppenKnapp" style="--on: {onColor}; --onHover: {onHover}" on:click={tilTopps}><span>Til Tops</span><img src="hovedBilder/mobil/tlf-tilTop-ikon.png" alt="Til Tops"/></div>
+<div class="tilToppenKnapp" style="right: {innerWidth <= 775 ? '25' : '50'}px; bottom: {innerWidth <= 775 ? '100' : '50'}px; --on: {onColor}; --onHover: {onHover}" on:click={tilTopps}>
+    <span>{#if innerWidth <= 775}^{:else}Til Tops{/if}</span>
+</div>
+
+<svelte:window bind:innerWidth/>
 
 
 
 <style>
     .tilToppenKnapp {
-        width: 140px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        width: fit-content;
+        padding: 20px;
         position: fixed;
-        bottom: 50px;
-        right: 50px;
         background-color: var(--on);
         border-radius: 15px;
 
@@ -60,9 +62,5 @@
     }
     .tilToppenKnapp:hover {
         background-color: var(--onHover);
-    }
-    
-    .tilToppenKnapp img {
-        display: none;
     }
 </style>

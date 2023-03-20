@@ -23,6 +23,7 @@
         display: grid;
         grid-gap: 1vw;
         grid-template-columns: auto auto;
+        margin-bottom: 5vw;
 
         height: fit-content;
     }
@@ -38,6 +39,5 @@
 
     .hvemText {
         width: 100%;
-        font-size: 1.5vw;
     }
 </style>
