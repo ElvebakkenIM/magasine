@@ -23,17 +23,6 @@
 
     let builder = data.img;
 
-    let author = data.about[0].author;
-    console.log(author)
-
-    let body = data.about[0].body
-
-    let img = data.about[0].mainImage.asset._ref
-    console.log(img)
-
-
-    
-</script>
    
     
     let newest5paBakka;
@@ -65,10 +54,6 @@
 <Kategorier/>
 
 <Nyeste5paBakka info={newest5paBakka}/>
-
-<p>{body}</p>
-
-<img src="{img}" alt="">
 
 <ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
 <InspText/>
