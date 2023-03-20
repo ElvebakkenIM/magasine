@@ -9,7 +9,7 @@
 
     export let artikkle;
     let ov = artikkle.title;
-    let uov = 'Hah hahahahah ahahha ha hiuhuhhahah haha ah hahahahah ahahha ha';
+    let uov = artikkle.subtitle;
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
 
