@@ -13,8 +13,8 @@ const client = sanityClient({
   export async function load({ }) {
     const data = await client.fetch(`*[_type == "post"]`);
     const imgBuilder = imageUrlBuilder(client);
-  
     if (data) {
+
       return {
         post: data,
         img: imgBuilder

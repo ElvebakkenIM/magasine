@@ -14,16 +14,15 @@
     import TlfMoreButton from 'lib//components/tlf-moreButton.svelte';
 
     export let data;
-    console.log(data.post[0])
+    console.log("YOLO",data.post[0])
+
 
     let postData = data.post;
     let newest = data.post[0];
 
     // let img = data.post[7].mainImage.asset._ref;
 
-    let builder = data.img;
-
-   
+    let builder = data.img;  
     
     let newest5paBakka;
     for (let post of data.post) {
