@@ -67,9 +67,9 @@
 
 
 
-{#if y >= 300}
+{#if y >= 300 || innerWidth <= 775}
 <div id="skrollMeny" style="{innerWidth <= 775 ? 'bottom: 0;' : 'top: 0;'}" in:fade out:fade>
-    <a href="index.html" tabindex="-1">
+    <a href="/" tabindex="-1">
         <svg class="skrollMenyLogo" style="--onFill:{onFill}" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950.02 301.7">
             <g>
                 <path class="cls-1" d="M157.61,255.98l-27.77,.85,13.63-112.59-62.54,107.52-9.54,.42-30.5-106.25-13.8,110.27H0L20.45,89.2l33.57-.63,30.33,105.61,60.83-104.98,33.23,.21-20.79,166.57Z"/>

@@ -8,6 +8,8 @@
     import s_overbilde from '$lib/assets/categories/-katSamfBildeoverlag.png';
     import s_overbilde_hover from '$lib/assets/categories/-katSamfBildeoverlag-hover.png';
 
+    import hoyrePil from '$lib/assets/categories/tlf-katPilHoyre-open.png';
+    import venstrePil from '$lib/assets/categories/tlf-katPilVenstre-open.png';
 
     let on = 0; // 0-Bakka, 1-Samf, 2-Krea
     let leftPos = 0;
@@ -15,46 +17,62 @@
         if (on != 2) { // Ikke på Krea
             on ++;
             leftPos -= 55;
+        } else {
+            on = 0;
+            leftPos += (55*2);
         }
+        console.log(on);
     }
     function katLeft() {
         if (on != 0) { // Ikke på Krea
             on --;
             leftPos += 55;
+        } else {
+            on = 2;
+            leftPos -= (55*2);
         }
+        console.log(on);
     }
+
+
+    let innerWidth = 0;
 </script>
 
 
 <div class="midItem">
-
     <div class="katSection">
         <button class="katButton" id="leftArrowBox" on:click={katLeft}>
-            <img src="hovedBilder/mobil/tlf-katPilVenstre-closed.png" id="leftArrowImgClosed" alt="Forrige kategori i bildekarusellen"/>
-            <img src="hovedBilder/mobil/tlf-katPilVenstre-open.png" id="leftArrowImg" alt="Forrige kategori i bildekarusellen"/>
+            {#if on == 0}
+            <img src={hoyrePil} id="leftArrowImgBack" alt="Forrige kategori i bildekarusellen"/>
+            {:else}
+            <img src={venstrePil} id="leftArrowImg" alt="Forrige kategori i bildekarusellen"/>
+            {/if}
         </button>
         <button class="katButton" id="rightArrowBox" on:click={katRight}>
-            <img src="hovedBilder/mobil/tlf-katPilHoyre-closed.png" id="rightArrowImgClosed" alt="Neste kategori i bildekarusellen"/>
-            <img src="hovedBilder/mobil/tlf-katPilHoyre-open.png" id="rightArrowImg"  alt="Neste kategori i bildekarusellen"/>
+            {#if on == 2}
+            <img src={venstrePil} id="rightArrowImgBack" alt="Neste kategori i bildekarusellen"/>
+            {:else}
+            <img src={hoyrePil} id="rightArrowImg"  alt="Neste kategori i bildekarusellen"/>
+            {/if}
         </button>
 
-        <div class="overskriftTekst"><h3><b>Kategorier</b></h3></div>
+        <div class="overskriftTekst" style="font-size: {innerWidth <= 775 ? '12.5' : '20'}px;"><h3><b>Kategorier</b></h3></div>
         <div class="slideshowCont">
             <div class="gridContKat" style="left: {leftPos}vw"> <!-- Beveges av pilene i mobilverson -->
-                <a href="/bakka"><div class="GridItemKat"><div class="katBox pic" id="onKat">
+                <a href="/bakka"><div class="GridItemKat"><div class="katBox pic" id="{on == 0 ? 'onKat' : ''}">
                     <img class="katBilde" src="hovedBilder/-katBakkaBilde.png" alt="">
                     <img class="bakkaBilde katBilde" src={b_overbilde} alt="">
                     <img class="bakkaBildeHover katBilde" src={b_overbilde_hover} alt="">
                     <h1 class="katText katTextBakka">På Bakka</h1>
                 </div></div></a>
 
-                <a href="/"><div class="GridItemKat"><div class="katBox pic" id="sKat">
+                <a href="/"><div class="GridItemKat"><div class="katBox pic" id="{on == 1 ? 'onKat' : ''}">
                     <img class="samfBilde katBilde" src={s_overbilde} alt="">
                     <img class="samfBildeHover katBilde" src={s_overbilde_hover} alt="">
                     <h1 class="katText katTextSamf">Samf. & Debatt</h1>
                 </div></div></a>
 
-                <a href="/"><div class="GridItemKat"><div class="katBox pic" id="kKat">
+                <a href="/"><div class="GridItemKat"><div class="katBox pic" id="{on == 2 ? 'onKat' : ''}">
                     <img class="kreativtBilde katBilde" src={k_overbilde} alt="">
                     <img class="kreativtBildeHover katBilde" src={k_overbilde_hover} alt="">
                     <h1 class="katText katTextKreativt">Kreativt</h1>
@@ -67,6 +85,8 @@
 
 </div>
 
+<svelte:window bind:innerWidth/>
+
 
 <style>
     .pic {
@@ -76,11 +96,9 @@
         position: absolute; 
         top: -30px;
         left: 0;
-        font-size: 20px;
         color: #414042;
     }h3 { /* No extra effects for h3 (kun der for universel utforming) */
         display: inline;
-        font-size: 20px;
     }  
 
 
@@ -100,6 +118,10 @@
 
     .katButton {
         display: none;
+    }
+
+    #onKat {
+        z-index: 1;
     }
 
 
@@ -213,22 +235,9 @@
 
         .katButton img {
             width: 4.5vw;
+            cursor: pointer;
         }
 
-        #leftArrowImg {
-            cursor: pointer;
-            display: none;
-        } #leftArrowImgClosed {
-            cursor: default;
-            display: block;
-        }
-        #rightArrowImg {
-            cursor: pointer;
-            display: block;
-        } #rightArrowImgClosed {
-            cursor: default;
-            display: none;
-        }
 
 
 

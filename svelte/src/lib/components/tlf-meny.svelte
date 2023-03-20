@@ -3,22 +3,22 @@
 
 <div class="tlfMenyBox">
     <div class="tlfMenyGrid">
-        <div class="tlfMenyItem" id="tlfMenyHjem" onclick="location.href='index.html';">
+        <a href="/" class="noLink"><div class="tlfMenyItem" id="tlfMenyHjem">
             Hjem
+        </div></a>
+        <div class="tlfMenyItem">
+            <a href="/bakka" id="tlfMenyBakka" class="noLink"><div>På Bakka</div></a>
+            <a href="/bakka" id="tlfMenyBakka" class="noLink"><div class="tlfMenyUnderitem">5 på Bakka</div></a>
         </div>
-        <div class="tlfMenyItem" id="tlfMenyBakka">
-            <div onclick="location.href='bakka/pa-bakka.html';">På Bakka</div>
-            <div class="tlfMenyUnderitem" onclick="location.href='bakka/fem-pa-bakka/katFemBakka.html';">5 på Bakka</div>
-        </div>
-        <div class="tlfMenyItem" id="tlfMenySamf" onclick="location.href='samfunn/katSamf.html';">
+        <a href="/samf-og-debatt" class="noLink"><div class="tlfMenyItem" id="tlfMenySamf">
             Samf. & Debatt
-        </div>
-        <div class="tlfMenyItem" id="tlfMenyKrea" onclick="location.href='kreativt/katKreativt.html';">
+        </div></a>
+        <a href="/kreativt" class="noLink"><div class="tlfMenyItem" id="tlfMenyKrea">
             Kreativt
-        </div>
-        <div class="tlfMenyItem" id="tlfMenyOm">
-            <div onclick="location.href='om/om.html';">Om Oss</div>
-            <div class="tlfMenyUnderitem" onclick="location.href='om/kont.html';">Kontakt</div>
+        </div></a>
+        <div class="tlfMenyItem">
+            <a href="/om" id="tlfMenyOm" class="noLink"><div>Om Oss</div></a>
+            <a href="/om" id="tlfMenyOm" class="noLink"><div class="tlfMenyUnderitem">Kontakt</div></a>
         </div>
     </div>
 </div>
@@ -87,5 +87,9 @@
     }
     #tlfMenyOm {
         color: #414042;
+    }
+
+    .noLink {
+        text-decoration: none;
     }
 </style>

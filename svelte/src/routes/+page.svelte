@@ -9,6 +9,9 @@
     import Nyeste5paBakka from 'lib//components/nyeste5paBakka.svelte';
     import MoreButton from 'lib//components/moreButton.svelte';
     import ScrollMenu from 'lib//components/scrollMenu.svelte';
+    import TlfArtikkel from 'lib//components/tlf-artikkel.svelte';
+    import TlfNyestArtikkel from 'lib//components/tlf-nyestArtikkel.svelte';
+    import TlfMoreButton from 'lib//components/tlf-moreButton.svelte';
 
     export let data;
     console.log("YOLO",data.post[0])
@@ -19,15 +22,7 @@
 
     // let img = data.post[7].mainImage.asset._ref;
 
-    let builder = data.img;
-
-    let author = data.post[0].author;
-    console.log(author)
-
-    let body = data.post[0].body
-
-    let img = data.post[0].mainImage.asset._ref
-    console.log(img)
+    let builder = data.img;  
     
     let newest5paBakka;
     for (let post of data.post) {
@@ -39,6 +34,9 @@
 
 
     let showMore = 0;
+
+    let innerWidth = 0;
+    let innerHeight = 0;
     
 </script>
 
@@ -46,24 +44,30 @@
 <Header/>
 <ScrollMenu/>
 
+{#if innerWidth <= 775}
+<TlfNyestArtikkel artikkle={newest}/>
+{:else}
 <NyestArtikkel artikkle={newest}/>
+{/if}
 
 <Kategorier/>
 
 <Nyeste5paBakka info={newest5paBakka}/>
 
-<p>{body}</p>
-
-<img src="{img}" alt="">
-
 <ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
 <InspText/>
 <ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
 
+{#if innerWidth <= 775}
+<TlfMoreButton bind:showMore={showMore}/>
+{:else}
 <MoreButton bind:showMore={showMore}/>
+{/if}
 
 
 <Footer/>
 
 
 <TilTops/>
+
+<svelte:window bind:innerWidth bind:innerHeight/>

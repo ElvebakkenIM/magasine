@@ -1,4 +1,3 @@
-
 <script>
     import catIcon from '$lib/assets/artikkles/-kategori-ikon.png';
     import placeholder from '$lib/assets/artikkles/placeholder.png';
@@ -17,7 +16,7 @@
     console.log(cats)
 
     let cattexts = [];
-    if (cats.length != 0) { //TODO
+    if (cats.length != 0) { //TODO (kan vise artikkler uten kategorier)
         for (let cat of cats) {
             cat === '' ? cats.shift() : '';
             switch (cat) {
@@ -71,10 +70,9 @@
     }
 </script>
 
+
 <a href="/bakka/#/{artikkle.slug.current}">
 <div class="gridItemArtic pic"><div class="articBox pic">
-
-
     
     <svg class="articImg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
         <path style="fill: {color1};" d="M1200,391.43H0V118.96S196.07,52.7,442.58,67.81c260.91,16,427.91,110.45,427.91,110.45"/>
@@ -82,7 +80,7 @@
           <path style="fill: {color2}; opacity: 0.5;" d="M870.49,178.27c90.42-24.68,167.29-15.04,186-11.33,68.24,13.53,117.12,43.5,143.51,62.49v162H465.45c105.55-94.93,221-162.93,405.04-213.16Z"/>
           <path style="fill: {color2};" d="M870.49,178.27c89.13-29.02,167.29-15.04,186-11.33,68.24,13.53,117.12,43.5,143.51,62.49v162h-500.35s25.35-69.99,69.46-129c44.49-59.51,101.38-84.16,101.38-84.16Z"/>
         </g>
-      </svg>
+    </svg>
 
     <svg class="overlagHover articImg" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
         <path style="fill: #414042;" d="M1200,177.58v213.85H0V65.57S123.32,0,334.01,0s365.64,93.31,365.64,93.31c0,0,122.82-61.88,296.53-27.73,164.04,32.25,203.82,112.01,203.82,112.01Z"/>
@@ -107,7 +105,7 @@
     {:else}
     <img style="width: 100%" src={placeholder} alt=""/>
     {/if}
-    <!--TODO Dette er bildet, OBS: Lag artikkelene til bildestørrelse -->
+    <!-- TODO Dette er bildet, OBS: Lag artikkelene til bildestørrelse -->
 </div></div></a>
 
 <style>
