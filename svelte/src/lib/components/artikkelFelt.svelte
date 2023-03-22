@@ -12,33 +12,33 @@
     
     
     // if (placing == '^' && articData.length-1 < 6) {
-        //     articShowLength = articData.length-1;
-        // } 
-        
-        
-        let innerWidth = 0;
-        let innerHeight = 0;
-        
-        let articShowLength = 6;
-        $: innerWidth, changeShowLengthOnScale();
-        
-        function changeShowLengthOnScale() {
-            if (innerWidth <= 775) {
-                articShowLength = 4;
-            } else {
-                articShowLength = 6;
-            }
+    //     articShowLength = articData.length-1;
+    // } 
+    
+    
+    let innerWidth = 0;
+    let innerHeight = 0;
+    
+    let articShowLength = 6;
+    $: innerWidth, changeShowLengthOnScale();
+    
+    function changeShowLengthOnScale() {
+        if (innerWidth <= 775) {
+            articShowLength = 4;
+        } else {
+            articShowLength = 6;
         }
+    }
 
-        let shift = 0; // To show the 7th++ article if its the second component used
-        $: innerWidth, isBottomFixOnScale();
+    let shift = 0; // To show the 7th++ article if its the second component used
+    $: innerWidth, isBottomFixOnScale();
 
-        function isBottomFixOnScale() {
-            if (placing == 'v') {
-                shift = articShowLength;
-            }
+    function isBottomFixOnScale() {
+        if (placing == 'v') {
+            shift = articShowLength;
         }
-        </script>
+    }
+</script>
 
 
 <div class="midItem">
