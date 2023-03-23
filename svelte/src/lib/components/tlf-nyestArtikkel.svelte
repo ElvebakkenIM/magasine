@@ -65,6 +65,8 @@
 
     <div class="latestNewsBox pic">
         <div class="overskriftTekst"><h3><b>Siste nytt</b></h3></div>
+        
+        <a href="/@artikle/#/{artikkle.slug.current}">
         <div class="latestNewsBox-hiddencontent pic">
 
             
@@ -89,7 +91,7 @@
                     <div style="float: right;">{date}</div>
                 </div>
             </div>
-        </div>
+        </div></a>
     </div>
 
 </div>

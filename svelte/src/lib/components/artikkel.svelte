@@ -71,7 +71,7 @@
 </script>
 
 
-<a href="/bakka/#/{artikkle.slug.current}">
+<a href="/@artikle/#/{artikkle.slug.current}">
 <div class="gridItemArtic pic"><div class="articBox pic">
     
     <svg class="articImg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
