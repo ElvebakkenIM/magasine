@@ -80,7 +80,7 @@
         <div style="font-style: italic;">{post.Caption}</div>
     </div>
 
-    <p>{post.body}</p>
+    <div class="text">{post.body}</div>
 </div>
 
 
@@ -92,5 +92,13 @@
 
     .pic {
         border-radius: 2vw;
+    }
+
+    .text {
+        margin-top: 5vw;
+        width: 100%;
+        font-family: Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 1.25rem;
+        line-height: 2rem;
     }
 </style>
