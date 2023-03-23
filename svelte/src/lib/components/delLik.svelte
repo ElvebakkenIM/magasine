@@ -55,4 +55,10 @@
         cursor: pointer;
     }
 
+    @media only screen and (max-width: 775px) {
+        svg {
+            width: 8vw;
+        }
+    }
+
 </style>
