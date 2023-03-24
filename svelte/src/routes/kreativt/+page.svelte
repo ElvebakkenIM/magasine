@@ -30,7 +30,7 @@
 
 <ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
 <Kategorier/>
-<InspText/>
+<InspText info={data.insp[0]}/>
 <ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
 
 <MoreButton bind:showMore={showMore}/>

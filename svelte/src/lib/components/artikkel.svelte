@@ -13,7 +13,6 @@
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
 
-    console.log(cats)
 
     let cattexts = [];
     if (cats.length != 0) { //TODO (kan vise artikkler uten kategorier)
@@ -38,7 +37,6 @@
             }
         }
     }
-    console.log(cats, cattexts, cats.length)
     // cattexts[0] === '' ? cattexts.shift() : '';
 
     let color1 = '#414042';
