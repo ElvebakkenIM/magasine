@@ -28,7 +28,7 @@
         onB = '#FF3333';
         onFill = '#FF3333';
         break;
-    case '/bakka/fem-pa-bakka':
+    case '/bakka/5-pa-bakka':
         onfB = '#FF3333';
         onFill = '#FF3333';
         break;
@@ -101,7 +101,7 @@
             {#if !(innerWidth <= 775)}
             <div class="dropdown">
                 <a href="/bakka" class="noLink"><div class="menyKnapp" style="--on: {onB}">På Bakka</div></a>  <!-- TODO role: og tabindex: -->
-                <a href="/bakka" class="noLink"><div class="dropKnapp menyKnapp underKnapp" style="--on: {onfB}">5 på Bakka</div></a>
+                <a href="/bakka/5-pa-bakka" class="noLink"><div class="dropKnapp menyKnapp underKnapp" style="--on: {onfB}">5 på Bakka</div></a>
             </div>
             
             <a href="/samf-og-debatt" class="noLink"><div style="--on: {onS}" class="menyKnapp">Samf. og Debatt</div></a>
