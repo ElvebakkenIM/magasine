@@ -14,8 +14,8 @@ const client = sanityClient({
     const data = await client.fetch(`*[_type == "post"]`);
     const inspText = await client.fetch(`*[_type == "inspText" && page match "hjem"]`);
     const imgBuilder = imageUrlBuilder(client);
-  
     if (data) {
+
       return {
         post: data,
         insp: inspText,

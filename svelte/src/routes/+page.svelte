@@ -20,9 +20,7 @@
 
     // let img = data.post[7].mainImage.asset._ref;
 
-    let builder = data.img;
-
-   
+    let builder = data.img;  
     
     let newest5paBakka;
     for (let post of data.post) {
