@@ -4,7 +4,6 @@
     let name = editor.name;
     let position = editor.position;
     let eClass = editor.class;
-    console.log(editor);
 </script>
 
 <div class="hvemGridItem">

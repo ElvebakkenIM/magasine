@@ -15,7 +15,7 @@
 
 
     let cattexts = [];
-    if (cats.length != 0) { //TODO (kan vise artikkler uten kategorier)
+    if (artikkle.hasOwnProperty('categories')) { //TODO (kan vise artikkler uten kategorier)
         for (let cat of cats) {
             cat === '' ? cats.shift() : '';
             switch (cat) {
@@ -89,9 +89,11 @@
         <div class="arcticUnderoverskrift">{uov}</div>
         <div class="articInfo">
             <div style="float: left; display: flex; flex-direction: row;">
-                {#if cattexts.length != 0}{#each cattexts as cat} <!--TODO-->
+                {#if artikkle.hasOwnProperty('categories')}
+                {#each cattexts as cat} <!--TODO-->
                 <div class="articKat"><img src={catIcon} alt="Kategori">{cat}</div>
-                {/each}{/if}
+                {/each}
+                {/if}
             </div>
             <div style="float: right;">{date}</div>
         </div>
@@ -142,7 +144,7 @@
         bottom: 0;
     }
     .arcticOverskrift {
-        font-size: 4vw;
+        font-size: 3vw;
     }.arcticUnderoverskrift {
         opacity: 0;
         font-size: 2vw;

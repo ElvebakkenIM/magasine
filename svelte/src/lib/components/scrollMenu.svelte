@@ -39,11 +39,11 @@
         break;
 
     case '/om':
-        onOm = '#4A9CFF;';
+        onOm = '#4A9CFF';
         onFill = '#4A9CFF';
         break;
     case '/om/kontakt':
-        onKo = '#4A9CFF;';
+        onKo = '#4A9CFF';
         onFill = '#4A9CFF';
         break;
     default:

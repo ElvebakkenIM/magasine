@@ -21,7 +21,6 @@
             on = 0;
             leftPos += (55*2);
         }
-        console.log(on);
     }
     function katLeft() {
         if (on != 0) { // Ikke på Krea
@@ -31,7 +30,6 @@
             on = 2;
             leftPos -= (55*2);
         }
-        console.log(on);
     }
 
 
@@ -60,19 +58,19 @@
         <div class="slideshowCont">
             <div class="gridContKat" style="left: {leftPos}vw"> <!-- Beveges av pilene i mobilverson -->
                 <a href="/bakka"><div class="GridItemKat"><div class="katBox pic" id="{on == 0 ? 'onKat' : ''}">
-                    <img class="katBilde" src="hovedBilder/-katBakkaBilde.png" alt="">
+                    <!-- <img class="katBilde" src="hovedBilder/-katBakkaBilde.png" alt=""> -->
                     <img class="bakkaBilde katBilde" src={b_overbilde} alt="">
                     <img class="bakkaBildeHover katBilde" src={b_overbilde_hover} alt="">
                     <h1 class="katText katTextBakka">På Bakka</h1>
                 </div></div></a>
 
-                <a href="/"><div class="GridItemKat"><div class="katBox pic" id="{on == 1 ? 'onKat' : ''}">
+                <a href="/samf-og-debatt"><div class="GridItemKat"><div class="katBox pic" id="{on == 1 ? 'onKat' : ''}">
                     <img class="samfBilde katBilde" src={s_overbilde} alt="">
                     <img class="samfBildeHover katBilde" src={s_overbilde_hover} alt="">
                     <h1 class="katText katTextSamf">Samf. & Debatt</h1>
                 </div></div></a>
 
-                <a href="/"><div class="GridItemKat"><div class="katBox pic" id="{on == 2 ? 'onKat' : ''}">
+                <a href="/kreativt"><div class="GridItemKat"><div class="katBox pic" id="{on == 2 ? 'onKat' : ''}">
                     <img class="kreativtBilde katBilde" src={k_overbilde} alt="">
                     <img class="kreativtBildeHover katBilde" src={k_overbilde_hover} alt="">
                     <h1 class="katText katTextKreativt">Kreativt</h1>

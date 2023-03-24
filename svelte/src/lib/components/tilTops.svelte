@@ -2,7 +2,6 @@
 
     import {page} from '$app/stores';
     let onURL = $page.url.pathname;
-    console.log(onURL)
 
     let onColor = '#4A9CFF';
     let onHover = '#4083db';
