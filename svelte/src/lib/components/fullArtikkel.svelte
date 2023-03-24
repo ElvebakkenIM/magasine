@@ -16,7 +16,6 @@
             break;
         }
     }
-    console.log(post);
 
 
     //Retrives builder from sanity through imbuilder. The uses this to create url for image. 

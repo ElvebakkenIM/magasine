@@ -8,24 +8,26 @@
     let date = artikkle.publishedAt;
 
     let cattexts = [''];
-    for (let cat of cats) {
-        cat === '' ? cats.shift() : '';
-        switch (cat) {
-            case 'pa-bakka':
-                cattexts.push('På Bakka');
-                break;
-            case '5-pa-bakka':
-                cattexts.push('5 på Bakka');
-                break;
-            case 'samf-og-debatt':
-                cattexts.push('Samf. & Debatt');
-                break;
-            case 'kreativt':
-                cattexts.push('Kreativt');
-                break;
-            default:
-                cattexts.push('whhaaa');
-                break;
+    if (artikkle.hasOwnProperty('categories')) {
+        for (let cat of cats) {
+            cat === '' ? cats.shift() : '';
+            switch (cat) {
+                case 'pa-bakka':
+                    cattexts.push('På Bakka');
+                    break;
+                case '5-pa-bakka':
+                    cattexts.push('5 på Bakka');
+                    break;
+                case 'samf-og-debatt':
+                    cattexts.push('Samf. & Debatt');
+                    break;
+                case 'kreativt':
+                    cattexts.push('Kreativt');
+                    break;
+                default:
+                    cattexts.push('whhaaa');
+                    break;
+            }
         }
     }
     cattexts[0] === '' ? cattexts.shift() : '';
@@ -86,9 +88,11 @@
                 <div class="latestNewsUnderoverskrift">{uov}</div>
                 <div class="articInfo">  <!-- Bruker CSS fra "alle artikklene"  -->
                     <div style="float: left; display: flex; flex-direction: row;">
+                        {#if artikkle.hasOwnProperty('categories')}
                         {#each cattexts as cat}
                         <div class="articKat"><img src={catIcon} alt="Kategori">{cat}</div>
                         {/each}
+                        {/if}
                     </div>
                     <div style="float: right;">{date}</div>
                 </div>

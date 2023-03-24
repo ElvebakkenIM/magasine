@@ -42,16 +42,17 @@
         break;
 
     case '/om':
-        onOm = '#4A9CFF;';
+        onOm = '#4A9CFF';
         onFill = '#4A9CFF';
         break;
     case '/om/kontakt':
-        onKo = '#4A9CFF;';
+        onKo = '#4A9CFF';
         onFill = '#4A9CFF';
         break;
     default:
         break;
     }
+
 
 
     let innerWidth = 0;
@@ -100,11 +101,11 @@
         <div class="menyLeft">
             {#if !(innerWidth <= 775)}
             <div class="dropdown">
-                <a href="/bakka" class="noLink"><div class="menyKnapp" style="--on: {onB}">På Bakka</div></a>  <!-- TODO role: og tabindex: -->
+                <a href="/bakka" class="noLink"><div class="menyKnapp" style="--on: {onB}">På Bakka</div></a>
                 <a href="/bakka/5-pa-bakka" class="noLink"><div class="dropKnapp menyKnapp underKnapp" style="--on: {onfB}">5 på Bakka</div></a>
             </div>
             
-            <a href="/samf-og-debatt" class="noLink"><div style="--on: {onS}" class="menyKnapp">Samf. og Debatt</div></a>
+            <a href="/samf-og-debatt" class="noLink"><div class="menyKnapp" style="--on: {onS}">Samf. og Debatt</div></a>
             {/if}
         </div>
         <div class="menyRight">
@@ -113,8 +114,8 @@
             <a href="/kreativt" class="noLink"><div class="menyKnapp" style="--on: {onK}">Kreativt</div></a>
 
             <div class="dropdown">
-                <a href="/om" class="noLink"><div style="--on: {onOm}" class="menyKnapp">Om Oss</div></a>
-                <a href="/om" class="noLink"><div style="--on: {onKo}" class="dropKnapp menyKnapp underKnapp">Kontakt</div></a>
+                <a href="/om" class="noLink"><div class="menyKnapp" style="--on: {onOm}">Om Oss</div></a>
+                <a href="/om" class="noLink"><div class="dropKnapp menyKnapp underKnapp" style="--on: {onKo}">Kontakt</div></a>
             </div>
             
             <!-- <Sok /> -->
@@ -225,7 +226,6 @@
 
     .noLink {
         text-decoration: none;
-        color: black;
     }
 
     .dropdown {

@@ -8,7 +8,6 @@
     
     export let postdata = [''];
     let articData = postdata;
-    console.log(articData)
     
     
     // if (placing == '^' && articData.length-1 < 6) {

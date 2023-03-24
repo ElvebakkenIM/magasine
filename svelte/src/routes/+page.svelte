@@ -14,8 +14,6 @@
     import TlfMoreButton from 'lib//components/tlf-moreButton.svelte';
 
     export let data;
-    console.log("YOLO",data.post[0])
-
 
     let postData = data.post;
     let newest = data.post[0];
@@ -26,7 +24,7 @@
     
     let newest5paBakka;
     for (let post of data.post) {
-        if (post.categories.includes("5-pa-bakka")) {
+        if (post.hasOwnProperty('categories') && post.categories.includes("5-pa-bakka")) {
             newest5paBakka = post;
             break;
         }
