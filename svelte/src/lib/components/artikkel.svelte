@@ -101,7 +101,7 @@
 
 
     {#if artikkle.hasOwnProperty('mainImage')}
-    <img style="width: 100%" src={urlFor(artikkle.mainImage.asset._ref).url()} alt=""/>
+    <img style="width: 100%" src={urlFor(artikkle.mainImage.asset._ref).width(1000).url()} alt=""/>
     {:else}
     <img style="width: 100%" src={placeholder} alt=""/>
     {/if}
@@ -120,10 +120,9 @@
     }
 
     .gridItemArtic {
+        width: 100%;
         margin-top: 0;
         margin-bottom: 0;
-        display: flex;
-        justify-content: center;
     }
     .articBox {
         background-color: lightblue;

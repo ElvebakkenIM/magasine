@@ -2,12 +2,14 @@
 
     import {page} from '$app/stores';
     let onURL = $page.url.pathname;
+    console.log(onURL)
 
     let onColor = '#4A9CFF';
     let onHover = '#4083db';
 
     switch(onURL) {
-    case '/bakka' || '/bakka/fem-pa-bakka':
+    case '/bakka':
+    case '/bakka/5-pa-bakka':
         onColor = '#FF3333';
         onHover = '#d52127';
         break;

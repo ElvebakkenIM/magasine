@@ -8,7 +8,7 @@
         </div></a>
         <div class="tlfMenyItem">
             <a href="/bakka" id="tlfMenyBakka" class="noLink"><div>På Bakka</div></a>
-            <a href="/bakka" id="tlfMenyBakka" class="noLink"><div class="tlfMenyUnderitem">5 på Bakka</div></a>
+            <a href="/bakka/5-pa-bakka" id="tlfMenyBakka" class="noLink"><div class="tlfMenyUnderitem">5 på Bakka</div></a>
         </div>
         <a href="/samf-og-debatt" class="noLink"><div class="tlfMenyItem" id="tlfMenySamf">
             Samf. & Debatt
