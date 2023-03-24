@@ -9,12 +9,14 @@ const client = sanityClient({
   });
 
   export async function load({ }) {
-    const data = await client.fetch(`*[_type == "post" && categories match "pa-bakka"]`);
+    const posts = await client.fetch(`*[_type == "post" && categories match "pa-bakka"]`);
+    const inspText = await client.fetch(`*[_type == "inspText" && page match "pa-bakka"]`);
     const imgBuilder = imageUrlBuilder(client);
   
-    if (data) {
+    if (posts) {
       return {
-        post: data,
+        post: posts,
+        insp: inspText,
         img: imgBuilder
       };
     }

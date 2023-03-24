@@ -10,11 +10,13 @@ const client = sanityClient({
 
   export async function load({ }) {
     const data = await client.fetch(`*[_type == "post" && categories match "kreativt"]`);
+    const inspText = await client.fetch(`*[_type == "inspText" && page match "kreativt"]`);
     const imgBuilder = imageUrlBuilder(client);
   
     if (data) {
       return {
         post: data,
+        insp: inspText,
         img: imgBuilder
       };
     }

@@ -1,6 +1,8 @@
 <script>
-    let title = 'Vil DU skrive for MagasinE?'
-    let text = 'Du kan sende artikler, bilder, kortfilmer, podcaster og hva annet du vil til magasine.bakka@gmail.com eller på <a href="/kont">kontakt oss</a>.'
+    export let info;
+
+    let title = info.title
+    let text = info.text
 
     let innerWidth = 0;
 </script>

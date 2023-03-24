@@ -56,7 +56,7 @@
 <Nyeste5paBakka info={newest5paBakka}/>
 
 <ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
-<InspText/>
+<InspText info={data.insp[0]}/>
 <ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
 
 {#if innerWidth <= 775}
