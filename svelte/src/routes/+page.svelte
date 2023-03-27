@@ -18,12 +18,48 @@
     let postData = data.post;
     let newest = data.post[0];
 
+
+    //**   Endre _createdAt til kun dato   **/
+
+    // let date;
+    // for (let post of postData) {
+    //     date = '';
+    //     for (let i = 0; i < 10; i++) {
+    //         date += String(post._createdAt)[i];
+    //     }
+    //     post._createdAt = date;
+    // }
+
+    console.log(postData)
+    console.log(postData[0]._createdAt, postData[1]._createdAt, postData[0]._createdAt > postData[1]._createdAt);
+    
+    // let sortedPosts = [];
+
+    // for (let post of postData) {
+    //     if (sortedPosts.length > 0) {
+    //         for (let i = 0; i < sortedPosts.length -1; i++) {
+    //             if (post._createdAt > sortedPosts[i]._createdAt) {
+    //                 console.log(sortedPosts[i]._createdAt, post._createdAt)
+    //             }
+    //             else if (post._createdAt > sortedPosts[i+1]._createdAt && post._createdAt < sortedPosts[i]._createdAt) {
+    //                 if () {
+
+    //                 }
+    //                 console.log(sortedPosts[i+1]._createdAt, post._createdAt, sortedPosts[i]._createdAt)
+    //             }
+    //         }
+    //     } else {
+    //         sortedPosts.push(post);
+    //     }
+    // }
+    
+
     // let img = data.post[7].mainImage.asset._ref;
 
     let builder = data.img;  
     
     let newest5paBakka;
-    for (let post of data.post) {
+    for (let post of postData) {
         if (post.hasOwnProperty('categories') && post.categories.includes("5-pa-bakka")) {
             newest5paBakka = post;
             break;
@@ -43,9 +79,9 @@
 <ScrollMenu/>
 
 {#if innerWidth <= 775}
-<TlfNyestArtikkel artikkle={newest}/>
+<TlfNyestArtikkel builder={builder} artikkle={newest}/>
 {:else}
-<NyestArtikkel artikkle={newest}/>
+<NyestArtikkel builder={builder} artikkle={newest}/>
 {/if}
 
 <Kategorier/>
