@@ -101,7 +101,8 @@
 
         <div class="dropdown">
             <a href="/om" class="noLink"><div style="--on: {onOm}" class="menyKnapp">Om Oss</div></a>
-            <a href="/om" class="noLink"><div style="--on: {onKo}" class="dropKnapp skrollUnderKnapp">Kontakt</div></a>
+            <!-- <a href="/om" class="noLink"><div style="--on: {onKo}" class="dropKnapp skrollUnderKnapp">Kontakt</div></a> -->
+            <div class="dropKnapp skrollUnderKnapp" style="background-color: #414042; color: gray; cursor: not-allowed">Kontakt</div>
         </div>
 
         <!-- <Sok/> -->

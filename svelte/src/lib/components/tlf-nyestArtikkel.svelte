@@ -1,11 +1,14 @@
 <script>
     import catIcon from '$lib/assets/artikkles/-kategori-ikon.png';
+    import placeholder from '$lib/assets/artikkles/placeholder.png';
 
     export let artikkle;
     let ov = artikkle.title;
     let uov = artikkle.subtitle;
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
+
+    export let builder;
 
     let cattexts = [''];
     if (artikkle.hasOwnProperty('categories')) {
@@ -95,6 +98,11 @@
                     <div style="float: right;">{date}</div>
                 </div>
             </div>
+            {#if artikkle.hasOwnProperty('mainImage')}
+            <img style="width: 100%" src={builder.image(artikkle.mainImage.asset._ref).width(1000).url()} alt=""/>
+            {:else}
+            <img style="width: 100%" src={placeholder} alt=""/>
+            {/if}
         </div></a>
     </div>
 
