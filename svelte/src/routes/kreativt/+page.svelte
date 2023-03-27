@@ -26,7 +26,7 @@
 <ScrollMenu/>
 <Header/>
 
-<NyestArtikkel artikkle={newest}/>
+<NyestArtikkel builder={builder} artikkle={newest}/>
 
 <ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
 <Kategorier/>

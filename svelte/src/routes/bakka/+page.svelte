@@ -38,7 +38,7 @@
 <ScrollMenu/>
 <Header/>
 
-<NyestArtikkel artikkle={newest}/>
+<NyestArtikkel builder={builder} artikkle={newest}/>
 
 <Nyeste5paBakka info={newest5paBakka}/>
 
