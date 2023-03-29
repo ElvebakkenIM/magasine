@@ -2,11 +2,23 @@
     import catIcon from '$lib/assets/artikkles/-kategori-ikon.png';
     import placeholder from '$lib/assets/artikkles/placeholder.png';
 
+    export let ptypes;
+
     export let artikkle;
     let ov = artikkle.title;
     let uov = artikkle.subtitle;
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
+    let pType = artikkle.postType;
+    
+    if (pType) {
+        for (let type of ptypes) {
+            if (type._id == pType._ref) {
+                pType = type;
+                break;
+            }
+        }
+    }
 
     export let builder;
 
@@ -69,6 +81,9 @@
 <div class="midItem">
 
     <div class="latestNewsBox pic">
+        {#if pType}
+        <img src={builder.image(pType.image.asset._ref).url()} class="postType" alt="">
+        {/if}
         <div class="overskriftTekst"><h3><b>Siste nytt</b></h3></div>
         
         <a href="/@artikle/#/{artikkle.slug.current}">
@@ -109,6 +124,15 @@
 </div>
 
 <style>
+    .postType {
+        position: absolute;
+        width: 15%;
+        right: 0;
+        margin: 3%;
+        z-index: 1;
+    }
+
+
     .pic {
         border-radius: 2vw;
     }

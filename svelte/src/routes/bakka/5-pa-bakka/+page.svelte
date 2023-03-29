@@ -13,6 +13,7 @@
     export let data;
     
     let postData = data.post;
+    let postTypes = data.ptype;
     let newest = data.post[0];
 
     let builder = data.img;
@@ -25,11 +26,11 @@
 <ScrollMenu/>
 <Header/>
 
-<NyestArtikkel builder={builder} artikkle={newest}/>
+<NyestArtikkel builder={builder} artikkle={newest} ptypes={postTypes}/>
 
-<ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
+<ArtikkelFelt builder={builder} placing='^' postdata={postData} ptype={postTypes}/>
 <Kategorier/>
-<ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
+<ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData} ptype={postTypes}/>
 
 <MoreButton bind:showMore={showMore}/>
 

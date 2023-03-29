@@ -7,11 +7,23 @@
         return builder.image(source);
     }
 
+    export let ptypes;
+
     export let artikkle;
     let ov = artikkle.title;
     let uov = artikkle.subtitle;
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
+    let pType = artikkle.postType;
+    
+    if (pType) {
+        for (let type of ptypes) {
+            if (type._id == pType._ref) {
+                pType = type;
+                break;
+            }
+        }
+    }
 
 
     
@@ -71,6 +83,11 @@
 
 
 <a href="/bakka/#/{artikkle.slug.current}">
+<div style="position:relative">
+    {#if pType}
+    <img src={urlFor(pType.image.asset._ref).url()} class="postType" alt="">
+    {/if}
+
     <div class="gridItemArtic pic">
         <div class="articBox pic" style="height: 50vw;">
     
@@ -104,9 +121,18 @@
             <!-- TODO Dette er bildet, OBS: Lag artikkelene til bildestørrelse -->
         </div>
     </div>
-</a>
+</div></a>
     
     <style>
+        .postType {
+            position: absolute;
+            width: 15%;
+            right: 0;
+            margin: 3%;
+            z-index: 1;
+        }
+
+
         .articImg {
             width: 140%; 
             left: -30%;

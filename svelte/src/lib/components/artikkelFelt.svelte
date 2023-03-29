@@ -7,6 +7,7 @@
     export let builder;
     
     export let postdata = [''];
+    export let ptype;
     let articData = postdata;
     
     
@@ -49,9 +50,9 @@
         {#if i < articData.length-1-shift}
 
         {#if innerWidth <= 775}
-        <TlfArtikkel builder={builder} artikkle={articData[i+1+shift]}/>
+        <TlfArtikkel builder={builder} artikkle={articData[i+1+shift]} ptypes={ptype}/>
         {:else}
-        <Artikkel builder={builder} artikkle={articData[i+1+shift]}/>
+        <Artikkel builder={builder} artikkle={articData[i+1+shift]} ptypes={ptype}/>
         {/if}
         
         {/if}

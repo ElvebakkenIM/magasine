@@ -7,11 +7,23 @@
         return builder.image(source);
     }
 
+    export let ptypes;
+
     export let artikkle;
     let ov = artikkle.title;
     let uov = artikkle.subtitle;
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
+    let pType = artikkle.postType;
+    
+    if (pType) {
+        for (let type of ptypes) {
+            if (type._id == pType._ref) {
+                pType = type;
+                break;
+            }
+        }
+    }
 
 
     let cattexts = [];
@@ -70,45 +82,76 @@
 
 
 <a href="/@artikle/#/{artikkle.slug.current}">
-<div class="gridItemArtic pic"><div class="articBox pic">
-    
-    <svg class="articImg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
-        <path style="fill: {color1};" d="M1200,391.43H0V118.96S196.07,52.7,442.58,67.81c260.91,16,427.91,110.45,427.91,110.45"/>
-        <g>
-          <path style="fill: {color2}; opacity: 0.5;" d="M870.49,178.27c90.42-24.68,167.29-15.04,186-11.33,68.24,13.53,117.12,43.5,143.51,62.49v162H465.45c105.55-94.93,221-162.93,405.04-213.16Z"/>
-          <path style="fill: {color2};" d="M870.49,178.27c89.13-29.02,167.29-15.04,186-11.33,68.24,13.53,117.12,43.5,143.51,62.49v162h-500.35s25.35-69.99,69.46-129c44.49-59.51,101.38-84.16,101.38-84.16Z"/>
-        </g>
-    </svg>
-
-    <svg class="overlagHover articImg" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
-        <path style="fill: #414042;" d="M1200,177.58v213.85H0V65.57S123.32,0,334.01,0s365.64,93.31,365.64,93.31c0,0,122.82-61.88,296.53-27.73,164.04,32.25,203.82,112.01,203.82,112.01Z"/>
-    </svg>
-
-    <div class="articTextBox">
-        <div class="arcticOverskrift">{ov}</div>
-        <div class="arcticUnderoverskrift">{uov}</div>
-        <div class="articInfo">
-            <div style="float: left; display: flex; flex-direction: row;">
-                {#if artikkle.hasOwnProperty('categories')}
-                {#each cattexts as cat} <!--TODO-->
-                <div class="articKat"><img src={catIcon} alt="Kategori">{cat}</div>
-                {/each}
-                {/if}
-            </div>
-            <div style="float: right;">{date}</div>
-        </div>
-    </div>
-
-
-    {#if artikkle.hasOwnProperty('mainImage')}
-    <img style="width: 100%" src={urlFor(artikkle.mainImage.asset._ref).width(1000).url()} alt=""/>
-    {:else}
-    <img style="width: 100%" src={placeholder} alt=""/>
+<div style="position:relative">
+    {#if pType}
+    <img src={urlFor(pType.image.asset._ref).url()} class="postType" alt="">
+    <div class="pTypeText">{pType.title}</div>
     {/if}
-    <!-- TODO Dette er bildet, OBS: Lag artikkelene til bildestørrelse -->
-</div></div></a>
+
+    <div class="gridItemArtic pic"><div class="articBox pic">
+        
+        <svg class="articImg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
+            <path style="fill: {color1};" d="M1200,391.43H0V118.96S196.07,52.7,442.58,67.81c260.91,16,427.91,110.45,427.91,110.45"/>
+            <g>
+            <path style="fill: {color2}; opacity: 0.5;" d="M870.49,178.27c90.42-24.68,167.29-15.04,186-11.33,68.24,13.53,117.12,43.5,143.51,62.49v162H465.45c105.55-94.93,221-162.93,405.04-213.16Z"/>
+            <path style="fill: {color2};" d="M870.49,178.27c89.13-29.02,167.29-15.04,186-11.33,68.24,13.53,117.12,43.5,143.51,62.49v162h-500.35s25.35-69.99,69.46-129c44.49-59.51,101.38-84.16,101.38-84.16Z"/>
+            </g>
+        </svg>
+
+        <svg class="overlagHover articImg" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 391.43">
+            <path style="fill: #414042;" d="M1200,177.58v213.85H0V65.57S123.32,0,334.01,0s365.64,93.31,365.64,93.31c0,0,122.82-61.88,296.53-27.73,164.04,32.25,203.82,112.01,203.82,112.01Z"/>
+        </svg>
+
+        <div class="articTextBox">
+            <div class="arcticOverskrift">{ov}</div>
+            <div class="arcticUnderoverskrift">{uov}</div>
+            <div class="articInfo">
+                <div style="float: left; display: flex; flex-direction: row;">
+                    {#if artikkle.hasOwnProperty('categories')}
+                    {#each cattexts as cat} <!--TODO-->
+                    <div class="articKat"><img src={catIcon} alt="Kategori">{cat}</div>
+                    {/each}
+                    {/if}
+                </div>
+                <div style="float: right;">{date}</div>
+            </div>
+        </div>
+
+
+        {#if artikkle.hasOwnProperty('mainImage')}
+        <img style="width: 100%" src={urlFor(artikkle.mainImage.asset._ref).width(1000).url()} alt=""/>
+        {:else}
+        <img style="width: 100%" src={placeholder} alt=""/>
+        {/if}
+        <!-- TODO Dette er bildet, OBS: Lag artikkelene til bildestørrelse -->
+    </div></div>
+</div></a>
 
 <style>
+    .postType {
+        position: absolute;
+        width: 15%;
+        right: 0;
+        margin: 3%;
+        z-index: 1;
+    }
+    .pTypeText {
+        position: absolute;
+        right: 5%;
+        top: 25%;
+        background-color: #414042;
+        color: white;
+        font-size: 1.5vw;
+        padding: 2%;
+        border-radius: 1vw;
+        display: none;
+        z-index: 1;
+    }
+    .postType:hover + .pTypeText {
+        display: block;
+    }
+
+
     .articImg {
         width: 100%; 
         position: absolute; 

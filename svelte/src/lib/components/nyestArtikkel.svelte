@@ -2,11 +2,23 @@
     import catIcon from '$lib/assets/artikkles/-kategori-ikon.png';
     import placeholder from '$lib/assets/artikkles/placeholder.png';
 
+    export let ptypes;
+
     export let artikkle;
     let ov = artikkle.title;
     let uov = artikkle.subtitle;
     let cats = artikkle.categories;
     let date = artikkle.publishedAt;
+    let pType = artikkle.postType;
+    
+    if (pType) {
+        for (let type of ptypes) {
+            if (type._id == pType._ref) {
+                pType = type;
+                break;
+            }
+        }
+    }
 
     export let builder;
 
@@ -67,6 +79,12 @@
 </script>
 
 <div class="midItem">
+
+<div style="position:relative">
+    {#if pType}
+    <img src={builder.image(pType.image.asset._ref).url()} class="postType" alt="">
+    <div class="pTypeText">{pType.title}</div>
+    {/if}
     <div class="latestNewsBox pic">
         <div class="overskriftTekst"><h3><b>Siste nytt</b></h3></div>
         <a href="/@artikle/#/{artikkle.slug.current}">
@@ -106,11 +124,35 @@
             <img style="width: 100%" src={placeholder} alt=""/>
             {/if}
         </div></a>
-        </div>
+    </div>
 
-</div>
+</div></div>
 
 <style>
+    .postType {
+        position: absolute;
+        width: 10%;
+        right: 0;
+        margin: 3%;
+        z-index: 1;
+    }
+    .pTypeText {
+        position: absolute;
+        right: 2.5%;
+        top: 22%;
+        background-color: #414042;
+        color: white;
+        font-size: 1.5vw;
+        padding: 1%;
+        border-radius: 1vw;
+        display: none;
+        z-index: 1;
+    }
+    .postType:hover + .pTypeText {
+        display: block;
+    }
+
+
     .pic {
         border-radius: 2vw;
     }
