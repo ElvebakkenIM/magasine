@@ -11,13 +11,15 @@ const client = sanityClient({
   export async function load({ }) {
     const data = await client.fetch(`*[_type == "post" && categories match "samf-og-debatt"]`);
     const inspText = await client.fetch(`*[_type == "inspText" && page match "samf-og-debatt"]`);
+    const postType = await client.fetch(`*[_type == "post-type"]`);
     const imgBuilder = imageUrlBuilder(client);
   
     if (data) {
       return {
         post: data,
         insp: inspText,
-        img: imgBuilder
+        img: imgBuilder,
+        ptype: postType
       };
     }
     return {

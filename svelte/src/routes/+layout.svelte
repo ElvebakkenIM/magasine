@@ -1,4 +1,8 @@
-
+<svelte:head>
+  <title>MagasinE</title>
+  <!-- <link rel="icon" href="%sveltekit.assets%/favicon.png" /> -->
+	<link rel="icon" href="/favicon.png"/>
+</svelte:head>
 
 <style>
   :global(body) {

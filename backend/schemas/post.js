@@ -57,6 +57,15 @@ export default defineType({
       type: 'date',
     }),
     defineField({
+      name: 'postType',
+      title: 'Post Type',
+      type: 'reference',
+      to: [{type: 'post-type'}],
+      options: {
+        disableNew: true,
+      }
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'text',

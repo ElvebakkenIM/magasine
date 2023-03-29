@@ -1,3 +1,6 @@
+<svelte:head>
+	<link rel="icon" href="/favicon.png"/> <!-- Farg ikonene etter  -->
+</svelte:head>
 <script>
     import Header from '$lib/components/header.svelte';
     import NyestArtikkel from 'lib//components/nyestArtikkel.svelte';
@@ -9,13 +12,13 @@
     import Nyeste5paBakka from 'lib//components/nyeste5paBakka.svelte';
     import MoreButton from 'lib//components/moreButton.svelte';
     import ScrollMenu from 'lib//components/scrollMenu.svelte';
-    import TlfArtikkel from 'lib//components/tlf-artikkel.svelte';
     import TlfNyestArtikkel from 'lib//components/tlf-nyestArtikkel.svelte';
     import TlfMoreButton from 'lib//components/tlf-moreButton.svelte';
 
     export let data;
 
     let postData = data.post;
+    let postTypes = data.ptype;
     let newest = data.post[0];
 
 
@@ -81,18 +84,18 @@
 <ScrollMenu/>
 
 {#if innerWidth <= 775}
-<TlfNyestArtikkel builder={builder} artikkle={newest}/>
+<TlfNyestArtikkel builder={builder} artikkle={newest} ptypes={postTypes}/>
 {:else}
-<NyestArtikkel builder={builder} artikkle={newest}/>
+<NyestArtikkel builder={builder} artikkle={newest} ptypes={postTypes}/>
 {/if}
 
 <Kategorier/>
 
 <Nyeste5paBakka info={newest5paBakka}/>
 
-<ArtikkelFelt builder={builder} placing='^' postdata={postData}/>
+<ArtikkelFelt builder={builder} placing='^' postdata={postData} ptype={postTypes}/>
 <InspText info={data.insp[0]}/>
-<ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData}/>
+<ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData} ptype={postTypes}/>
 
 {#if innerWidth <= 775}
 <TlfMoreButton bind:showMore={showMore}/>
