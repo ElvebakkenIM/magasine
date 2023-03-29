@@ -23,6 +23,8 @@
     let onK = '#414042';
     let onOm = '#414042';
     let onKo = '#414042';
+
+
     switch(onURL) {
     case '/bakka':
         onB = '#FF3333';
@@ -52,6 +54,9 @@
     default:
         break;
     }
+    console.log('hei')
+    
+    
 
 
 

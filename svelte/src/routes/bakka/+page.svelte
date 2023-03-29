@@ -39,9 +39,6 @@
 </script>
 
 
-<ScrollMenu/>
-<Header/>
-
 <NyestArtikkel builder={builder} artikkle={newest} ptypes={postTypes}/>
 
 <Nyeste5paBakka info={newest5paBakka}/>
@@ -56,5 +53,3 @@
 
 <Footer/>
 
-
-<TilTops/>

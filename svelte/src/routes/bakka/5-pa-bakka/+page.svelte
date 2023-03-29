@@ -26,9 +26,6 @@
 </script>
 
 
-<ScrollMenu/>
-<Header/>
-
 <NyestArtikkel builder={builder} artikkle={newest} ptypes={postTypes}/>
 
 <ArtikkelFelt builder={builder} placing='^' postdata={postData} ptype={postTypes}/>
@@ -40,5 +37,3 @@
 
 <Footer/>
 
-
-<TilTops/>

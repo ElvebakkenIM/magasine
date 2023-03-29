@@ -30,12 +30,9 @@
     
 </script>
 
-<Header/>
-<ScrollMenu/>
 
 <FullArtikkel builder={builder} post={post}/>
 <DelLik/>
 
 <Footer sources={source}/>
 
-<TilTops/>

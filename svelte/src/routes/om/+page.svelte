@@ -31,9 +31,6 @@
 
 </script>
 
-<ScrollMenu/>
-<Header/>
-
 {#each Array(infoSorted.length) as _, i}
     <OmBoks info={infoSorted[i]}/>
 {/each}
@@ -44,5 +41,3 @@
 
 <Footer/>
 
-
-<TilTops/>
