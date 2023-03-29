@@ -18,7 +18,9 @@ export default defineType({
     }),
     defineField({
       name: 'sorting',
-      title: 'Sort Order (1 = first, 2 = second ...)',
+      title: 'Sort Order',
+      description: 'The sorting on the webpage (1 = first, 2 = second ...)',
+      validation: Rule => Rule.required(),
       type: 'number'
     })
   ],

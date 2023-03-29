@@ -2,10 +2,11 @@
     import RedaktorBoks from "./redaktorBoks.svelte";
 
     export let info;
-    let redaktor = []
+    let utvVedlike = []
     for (let person of info) {
-        if (person.team == 'redaktor') {
-            redaktor.push(person);
+        if (person.team == 'utv-vedlike') {
+            utvVedlike.push(person);
+            console.log(person);
         }
     }
 
@@ -16,10 +17,10 @@
 <div class="midItem">
 
     <div class="omBox pic" style="margin-bottom: {innerWidth <= 775 ? '12' : '5'}vw; width: {innerWidth <= 775 ? '100' : '75'}%; font-size: {innerWidth <= 775 ? '3.5' : '1.75'}vw;">
-        <b>Hvem styrer MagasinE?</b><br/><br/>
-        MagasinE er helt elevstyrt og styres i år (2022/2023) av disse redaktørene:
+        <b>Nettsiden sine utviklere og vedlikeholdere!</b><br/><br/>
+        Denne nettsiden vedlikeholdes i år (2022/2023) av disse elevene:
         <div class="hvemGrid" style="grid-template-columns: auto {innerWidth > 775 ? 'auto' : ''};">
-            {#each redaktor as person}
+            {#each utvVedlike as person}
                 <RedaktorBoks editor={person}/>
             {/each}
             

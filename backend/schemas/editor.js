@@ -6,9 +6,17 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'willShow',
-      title: 'Show person on website?',
-      type: 'boolean',
+      name: 'team',
+      title: 'Team',
+      type: 'string',
+      validation: Rule => Rule.required(),
+      options: {
+        list: [
+          { title: 'Redaktør', value: 'redaktor' },
+          { title: 'Utvikler/Vedlikeholder', value: 'utv-vedlike' },
+        ],
+        layout: 'radio',
+      }
     }),
     defineField({
       name: 'name',

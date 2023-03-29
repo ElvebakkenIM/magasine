@@ -2,6 +2,7 @@
     import Header from '$lib/components/header.svelte';
     import Footer from 'lib//components/footer.svelte';
     import HvemErVi from 'lib//components/hvemErVi.svelte';
+    import HvemUtviklere from 'lib//components/hvemUtviklere.svelte';
     import OmBoks from 'lib//components/omBoks.svelte';
     import ScrollMenu from 'lib//components/scrollMenu.svelte';
     import TilTops from 'lib//components/tilTops.svelte';
@@ -38,6 +39,8 @@
 {/each}
 
 <HvemErVi info={editors}/>
+
+<HvemUtviklere info={editors}/>
 
 <Footer/>
 
