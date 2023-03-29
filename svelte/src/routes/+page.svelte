@@ -44,7 +44,6 @@
 
     let builder = data.img;
 
-   
     let newest5paBakka;
     for (let post of postData) {
         if (post.hasOwnProperty('categories') && post.categories.includes("5-pa-bakka")) {
