@@ -17,6 +17,9 @@
 
     
     let postData = data.post;
+    postData.sort(function(a, b) {
+        return (new Date(a.publishedAt) - new Date(b.publishedAt))*-1;
+    })
     let postTypes = data.ptype;
     let newest = data.post[0];
 
