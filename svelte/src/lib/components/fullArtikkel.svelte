@@ -1,21 +1,8 @@
 <script>
-    import { page } from '$app/stores';
 
-    export let data;
+    export let post = {title: 'Loading, venligst vent...', subtitle: 'Tar det lang tid? Prøv å refreshe'};
     export let builder;
 
-
-    let pathlists = String($page.url).split('/');
-    let urlSlug = pathlists[(pathlists.length - 1)];
-    
-    let post = {title: 'Loading, venligst vent...', subtitle: 'Tar det lang tid? Prøv å refreshe'};
-
-    for(let thisPost of data){
-        if(thisPost.slug.current == (urlSlug)) {
-            post = thisPost;
-            break;
-        }
-    }
 
 
     //Retrives builder from sanity through imbuilder. The uses this to create url for image. 

@@ -75,6 +75,15 @@ export default defineType({
       type: 'text',
       description: 'This is where the article is written',
     }),
+    defineField({
+      name: 'sources',
+      title: 'Source List',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {
+        layout: 'list'
+      }
+    }),
   ],
 
   preview: {

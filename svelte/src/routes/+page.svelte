@@ -18,6 +18,13 @@
     export let data;
 
     let postData = data.post;
+
+    // https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
+    postData.sort(function(a, b) {
+        return (new Date(a.publishedAt) - new Date(b.publishedAt))*-1;   // Endre til ._createdAt for å få når de er laget
+    })
+    
+
     let postTypes = data.ptype;
     let newest = data.post[0];
 
@@ -34,35 +41,10 @@
     // }
 
     console.log(postData)
-    console.log(postData[0]._createdAt, postData[1]._createdAt, postData[0]._createdAt > postData[1]._createdAt);
-    
-    // let sortedPosts = [];
-
-    // for (let post of postData) {
-    //     if (sortedPosts.length > 0) {
-    //         for (let i = 0; i < sortedPosts.length -1; i++) {
-    //             if (post._createdAt > sortedPosts[i]._createdAt) {
-    //                 console.log(sortedPosts[i]._createdAt, post._createdAt)
-    //             }
-    //             else if (post._createdAt > sortedPosts[i+1]._createdAt && post._createdAt < sortedPosts[i]._createdAt) {
-    //                 if () {
-
-    //                 }
-    //                 console.log(sortedPosts[i+1]._createdAt, post._createdAt, sortedPosts[i]._createdAt)
-    //             }
-    //         }
-    //     } else {
-    //         sortedPosts.push(post);
-    //     }
-    // }
-    
-
-    // let img = data.post[7].mainImage.asset._ref;
 
     let builder = data.img;
 
    
-    
     let newest5paBakka;
     for (let post of postData) {
         if (post.hasOwnProperty('categories') && post.categories.includes("5-pa-bakka")) {
