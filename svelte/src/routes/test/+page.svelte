@@ -1,11 +1,40 @@
 
 
-
-
-
 <script>
 
+import sanityClient from "@sanity/client"
+import imageUrlBuilder from '@sanity/image-url'
+
+const client = sanityClient({
+    projectId: "bbtj980d",
+    dataset: "production",
+    apiVersion: "2023-02-27",
+    useCdn: false,
+    token: 'skDEbjdaZ8pKIiX2UYLgja42kHpeXRJ62rGCyJP8oiY4itWO0FY8WjfaQGNVfXGJVp1ptIP9V6QYmxU6yVfMwj1SSPWFPvYbQmmVvWmAciOChU4SzP8f65pMYbGyn3sj1oKjsPbnT1HScvgL7oXC2hTqSaPcTJAbKckOainHp0umGEkZMv3v'
+  });
+
+  export async function updateDocumentlikes(_id, likes) {
+          client.patch(_id).set({Likes: likes})
+    .commit()
+    .then  ((Updatelikes) =>{
+      console.log("it was updated")
+      console.log(Updatelikes)
+
+    })
+    
+
+    .catch((err) =>{
+      console.error('oh no, the update has failed', err.message)
+    })
+
+  }
+  
+
 export let data;
+
+
+
+
 
 import {page} from '$app/stores'; 
 
@@ -31,13 +60,14 @@ for(let post of data.post){
 console.log(postpage)
 
 
+
 let author = postpage.author;
-    // console.log(author)
+    
 
 
     let body = postpage.body;
 
-   
+    let like = postpage.Likes
     
     let title = postpage.title;
 
@@ -54,6 +84,16 @@ let author = postpage.author;
     function urlFor(source) {
         return builder.image(source)
     }
+
+
+    function oneLike() {
+        like += 1;
+        updateDocumentlikes(postpage._id, like)
+
+        console.log(like)
+    }
+
+   
 </script>
 
 
@@ -75,8 +115,11 @@ let author = postpage.author;
         {/if}
     </div>  
     
-    
-    
+    <p>{like}</p>
+
+    <button on:click={oneLike}>like button</button>
+
+
      
      <p>{body}</p> 
     

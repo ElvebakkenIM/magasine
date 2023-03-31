@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType, NumberInput} from 'sanity'
 
 export default defineType({
   name: 'post',
@@ -50,6 +50,17 @@ export default defineType({
       },
     }),
 
+
+    defineField({
+      name: 'Likes',
+      title: 'Likes',
+      type: 'number',
+      
+     
+      
+
+    
+    }),
 
     defineField({
       name: 'categories',
@@ -108,4 +119,8 @@ export default defineType({
       return {...selection, subtitle: author && `by ${author}`}
     },
   },
+
+
+
+  
 })
