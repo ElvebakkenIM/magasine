@@ -10,6 +10,9 @@
 
     export let data;
 
+
+
+
     //Retrives builder from sanity through imbuilder. The uses this to create url for image. 
     let builder = data.img;
 
@@ -32,7 +35,7 @@
 
 
 <FullArtikkel builder={builder} post={post}/>
-<DelLik/>
+<DelLik post={post}/>
 
 <Footer sources={source}/>
 

@@ -8,7 +8,6 @@
     let ov = artikkle.title;
     let uov = artikkle.subtitle;
     let cats = artikkle.categories;
-    let date = artikkle.publishedAt;
     let pType = artikkle.postType;
     
     if (pType) {
@@ -19,6 +18,11 @@
             }
         }
     }
+
+    let date = artikkle.publishedAt;
+    let lDate = date.split('-');
+    let months = ['', 'Jan.', 'Feb.', 'Mars', 'Apr.', 'Mai', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Des.']
+
 
     export let builder;
 
@@ -106,7 +110,9 @@
             
             <div class="latestNewsTextBox">
                 <div class="latestNewsOverskrift">{ov}</div>
+                {#if uov}
                 <div class="latestNewsUnderoverskrift">{uov}</div>
+                {/if}
                 <div class="articInfo">  <!-- Bruker CSS fra "alle artikklene"  -->
                     <div style="float: left; display: flex; flex-direction: row;">
                         {#if artikkle.hasOwnProperty('categories')}
@@ -115,7 +121,7 @@
                         {/each}
                         {/if}
                     </div>
-                    <div style="float: right;">{date}</div>
+                    <div style="float: right;">{parseInt(lDate[2])}. {months[parseInt(lDate[1])]} {lDate[0]}</div>
                 </div>
             </div>
             {#if artikkle.hasOwnProperty('mainImage')}

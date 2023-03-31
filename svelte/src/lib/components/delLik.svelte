@@ -1,11 +1,52 @@
 
 <script>
+    import sanityClient from "@sanity/client";
+
+    const client = sanityClient({
+        projectId: "bbtj980d",
+        dataset: "production",
+        apiVersion: "2023-01-30",
+        token: 'skENkg73UJi07Dlc04umLzx5dLR66tROiWIQcALYE3q2nu4rPft8GMsxgbuUhOGWf4xrL4GZG8i4aOPD2zj802xu01iThcoFTxYu6CVxNLGorzPhTqsNaIQOf0cy152AkaXkVlcTtwDLT1rxitK3do1K9mfkhaCqS9GaLF7JX0CE58jDURqo',
+    });
+    async function updateDocumentlikes(_id, likes) {
+        client.patch(_id).set({Likes: likes}).commit().then((Updatelikes) =>{
+            console.log("sucess")
+            console.log(Updatelikes)
+        }).catch((err) =>{
+            console.error('oh no, the update has failed', err.message)
+        })
+    }
 
     let liked = false;
+    
+    export let post = {Likes: 0};
+    let like = 0;
     function Like() {
-        console.log('Like clicked');
-        liked = !liked;
+        if (liked) {
+            like = post.Likes;
+            // like -= 1;           // Den henter ikke nytt, så tidligre likeing har ikke oppdatert seg (post er ikke oppdatert)
+            updateDocumentlikes(post._id, like)
+            console.log(like)
+            liked = false;
+            console.log("Undo");
+        } 
+        else {
+            if (post.hasOwnProperty('Likes')) {
+                like = post.Likes;
+            }
+            like += 1;
+            updateDocumentlikes(post._id, like)
+            console.log(like)
+            liked = true;
+            console.log("Liked");
+        }
     }
+
+
+    // client.getDocument('post.js').then((post) => {
+    //     console.log(`${post}`)
+    // })
+
 </script>
 
 <div>

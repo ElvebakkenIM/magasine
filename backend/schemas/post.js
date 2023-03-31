@@ -9,7 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: Rule => Rule.required(),
+      validation: Rule => Rule.required().max(24),
     }),
     defineField({
       name: 'slug',
@@ -26,6 +26,7 @@ export default defineType({
       name: 'subtitle',
       title: 'Subtitle',
       type: 'string',
+      validation: Rule => Rule.max(83),
     }),
     defineField({
       name: 'author',
