@@ -54,7 +54,6 @@
     default:
         break;
     }
-    console.log('hei')
     
     
 

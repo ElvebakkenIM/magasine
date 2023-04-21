@@ -1,5 +1,6 @@
 
 <script>
+    import { browser } from "$app/environment";
     import sanityClient from "@sanity/client";
 
     const client = sanityClient({
@@ -10,35 +11,62 @@
     });
     async function updateDocumentlikes(_id, likes) {
         client.patch(_id).set({Likes: likes}).commit().then((Updatelikes) =>{
-            console.log("sucess")
             console.log(Updatelikes)
         }).catch((err) =>{
             console.error('oh no, the update has failed', err.message)
         })
     }
 
-    let liked = false;
-    
-    export let post = {Likes: 0};
+
+
+    export let post = {Likes: 0, slug: '0'};
+    let slug = post.slug.current;
     let like = 0;
+
+
+
+
+
+    function getIsLiked() {
+        if (browser) {
+            return window.localStorage.getItem(slug);
+        }
+    }
+
+
+    let liked = false;
+    let sentLikeToSanity = false;
+    if (getIsLiked()) {
+        liked = true;
+        sentLikeToSanity = true;
+
+    }
+    
+
     function Like() {
         if (liked) {
-            like = post.Likes;
-            // like -= 1;           // Den henter ikke nytt, så tidligre likeing har ikke oppdatert seg (post er ikke oppdatert)
+            if (post.hasOwnProperty('Likes')) {
+                like = post.Likes;
+                if (sentLikeToSanity) {
+                    like -= 1;           // Henter kun inn nytt om siden er refreshet, så tidligre likeing har ikke oppdatert seg (post er ikke oppdatert)
+                }
+            } else {
+                like = 0;
+            }
             updateDocumentlikes(post._id, like)
-            console.log(like)
             liked = false;
-            console.log("Undo");
+            localStorage.removeItem(slug);
         } 
         else {
             if (post.hasOwnProperty('Likes')) {
                 like = post.Likes;
             }
-            like += 1;
+            if (!sentLikeToSanity) {
+                like += 1;
+            }
             updateDocumentlikes(post._id, like)
-            console.log(like)
             liked = true;
-            console.log("Liked");
+            localStorage.setItem(slug, 'yes');
         }
     }
 
