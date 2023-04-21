@@ -7,10 +7,10 @@
 
 
 <div style="margin-top: {innerWidth <= 775 ? '30' : '18'}vw;">
-    <div class="footContent">
+    <div class="footContent" style="margin-bottom: {innerWidth <= 775 ? '74' : '0'}px;">
         <img src={footBG} alt=""/>
 
-        <div class="sources">
+        <div class="sources" style="font-size: {innerWidth <= 775 ? '2.5' : '1.5'}vw;">
             <ul>
             {#each sources as kilde}
                 <li>{kilde}</li>
@@ -18,25 +18,21 @@
             </ul>
         </div>
 
-        <a href="https://magasine.sanity.studio/" target="_blank" rel="noreferrer" class="adminURL" style="{innerWidth <= 775 ? 'left' : 'right'}: 25vw;">
+        <a href="https://magasine.sanity.studio/" target="_blank" rel="noreferrer" class="adminURL" style="{innerWidth <= 775 ? 'left' : 'right'}: 25vw; top: {innerWidth <= 775 ? '3' : '12'}vw;">
             Administrator
-        </a><br>
+        </a>
     </div>
 </div>
 
 
-
-<div class="tlf footSpace"></div>
 
 <svelte:window bind:innerWidth/>
 
 
 <style>
     .sources {
-        position: absolute;
-        top: 45%;
-        font-size: 1.5vw;
-        line-height: 3vw;
+        margin-top: -12%;
+        line-height: 175%;
         color: white;
         background-color: #414042;
         width: 100%;
@@ -49,22 +45,17 @@
 
     .footContent {
         width: 100vw; 
-        height: 23vw;
+        height: fit-content;
         position: relative;
     }.footContent img {
         width: 100vw;
-        bottom: 0;
+        top: 0px;
     }
     .adminURL {
-        position: absolute; 
-        bottom: 5vw; 
+        position: absolute;
          
         color: rgba(255, 255, 255, .5);
     }.adminURL:hover {
         color: white;
-    }
-    .footSpace {
-        height: 74px;
-        width: 1px;
     }
 </style>
