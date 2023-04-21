@@ -13,9 +13,8 @@
     let ov = artikkle.title;
     let uov = artikkle.subtitle;
     let cats = artikkle.categories;
-    let date = artikkle.publishedAt;
-    let pType = artikkle.postType;
-    
+
+    let pType = artikkle.postType;    
     if (pType) {
         for (let type of ptypes) {
             if (type._id == pType._ref) {
@@ -24,6 +23,10 @@
             }
         }
     }
+
+    let date = artikkle.publishedAt;
+    let lDate = date.split('-');
+    let months = ['', 'Jan.', 'Feb.', 'Mars', 'Apr.', 'Mai', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Des.']
 
 
     let cattexts = [];
@@ -104,7 +107,9 @@
 
         <div class="articTextBox">
             <div class="arcticOverskrift">{ov}</div>
+            {#if uov}
             <div class="arcticUnderoverskrift">{uov}</div>
+            {/if}
             <div class="articInfo">
                 <div style="float: left; display: flex; flex-direction: row;">
                     {#if artikkle.hasOwnProperty('categories')}
@@ -113,7 +118,7 @@
                     {/each}
                     {/if}
                 </div>
-                <div style="float: right;">{date}</div>
+                <div style="float: right;">{parseInt(lDate[2])}. {months[parseInt(lDate[1])]} {lDate[0]}</div>
             </div>
         </div>
 
@@ -152,6 +157,7 @@
     }
 
 
+
     .articImg {
         width: 100%; 
         position: absolute; 
@@ -169,8 +175,8 @@
     }
     .articBox {
         background-color: lightblue;
-        width: 100%;   /* 35.65vw */
-        height: 25vw;
+        width: 100%;   /* 35.65vw  */
+        height: 25vw;   /* Artiklene er IKKE formet etter bildet når man setter høyden */
         overflow: hidden;
         position: relative;
         cursor: pointer;

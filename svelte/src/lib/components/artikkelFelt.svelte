@@ -30,8 +30,8 @@
         }
     }
 
-    let shift = 0; // To show the 7th++ article if its the second component used
-    $: innerWidth, isBottomFixOnScale();
+    let shift = 0; 
+    $: innerWidth, isBottomFixOnScale(); // To show the 7th++ article if its the second component used
 
     function isBottomFixOnScale() {
         if (placing == 'v') {
@@ -54,7 +54,7 @@
         {:else}
         <Artikkel builder={builder} artikkle={articData[i+1+shift]} ptypes={ptype}/>
         {/if}
-        
+
         {/if}
         {/each}
 

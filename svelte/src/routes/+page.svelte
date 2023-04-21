@@ -2,18 +2,14 @@
 	<link rel="icon" href="/favicon.png"/> <!-- Farg ikonene etter  -->
 </svelte:head>
 <script>
-    import Header from '$lib/components/header.svelte';
     import NyestArtikkel from 'lib//components/nyestArtikkel.svelte';
     import ArtikkelFelt from 'lib//components/artikkelFelt.svelte';
     import Footer from 'lib//components/footer.svelte';
     import InspText from 'lib//components/inspirasjonstekst.svelte';
     import Kategorier from 'lib//components/kategorier.svelte';
-    import TilTops from 'lib//components/tilTops.svelte';
     import Nyeste5paBakka from 'lib//components/nyeste5paBakka.svelte';
     import MoreButton from 'lib//components/moreButton.svelte';
-    import ScrollMenu from 'lib//components/scrollMenu.svelte';
     import TlfNyestArtikkel from 'lib//components/tlf-nyestArtikkel.svelte';
-    import TlfMoreButton from 'lib//components/tlf-moreButton.svelte';
 
     export let data;
 
@@ -61,8 +57,6 @@
 </script>
 
 
-<Header/>
-<ScrollMenu/>
 
 {#if innerWidth <= 775}
 <TlfNyestArtikkel builder={builder} artikkle={newest} ptypes={postTypes}/>
@@ -78,16 +72,10 @@
 <InspText info={data.insp[0]}/>
 <ArtikkelFelt builder={builder} bind:showMore={showMore} placing='v' postdata={postData} ptype={postTypes}/>
 
-{#if innerWidth <= 775}
-<TlfMoreButton bind:showMore={showMore}/>
-{:else}
-<MoreButton bind:showMore={showMore}/>
-{/if}
+<MoreButton bind:showMore={showMore} len={postData.length}/>
 
 
 <Footer/>
 
-
-<TilTops/>
 
 <svelte:window bind:innerWidth bind:innerHeight/>

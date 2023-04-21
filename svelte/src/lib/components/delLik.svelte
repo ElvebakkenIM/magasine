@@ -1,11 +1,80 @@
 
 <script>
+    import { browser } from "$app/environment";
+    import sanityClient from "@sanity/client";
+
+    const client = sanityClient({
+        projectId: "bbtj980d",
+        dataset: "production",
+        apiVersion: "2023-01-30",
+        token: 'skENkg73UJi07Dlc04umLzx5dLR66tROiWIQcALYE3q2nu4rPft8GMsxgbuUhOGWf4xrL4GZG8i4aOPD2zj802xu01iThcoFTxYu6CVxNLGorzPhTqsNaIQOf0cy152AkaXkVlcTtwDLT1rxitK3do1K9mfkhaCqS9GaLF7JX0CE58jDURqo',
+    });
+    async function updateDocumentlikes(_id, likes) {
+        client.patch(_id).set({Likes: likes}).commit().then((Updatelikes) =>{
+            console.log(Updatelikes)
+        }).catch((err) =>{
+            console.error('oh no, the update has failed', err.message)
+        })
+    }
+
+
+
+    export let post = {Likes: 0, slug: '0'};
+    let slug = post.slug.current;
+    let like = 0;
+
+
+
+
+
+    function getIsLiked() {
+        if (browser) {
+            return window.localStorage.getItem(slug);
+        }
+    }
+
 
     let liked = false;
-    function Like() {
-        console.log('Like clicked');
-        liked = !liked;
+    let sentLikeToSanity = false;
+    if (getIsLiked()) {
+        liked = true;
+        sentLikeToSanity = true;
+
     }
+    
+
+    function Like() {
+        if (liked) {
+            if (post.hasOwnProperty('Likes')) {
+                like = post.Likes;
+                if (sentLikeToSanity) {
+                    like -= 1;           // Henter kun inn nytt om siden er refreshet, så tidligre likeing har ikke oppdatert seg (post er ikke oppdatert)
+                }
+            } else {
+                like = 0;
+            }
+            updateDocumentlikes(post._id, like)
+            liked = false;
+            localStorage.removeItem(slug);
+        } 
+        else {
+            if (post.hasOwnProperty('Likes')) {
+                like = post.Likes;
+            }
+            if (!sentLikeToSanity) {
+                like += 1;
+            }
+            updateDocumentlikes(post._id, like)
+            liked = true;
+            localStorage.setItem(slug, 'yes');
+        }
+    }
+
+
+    // client.getDocument('post.js').then((post) => {
+    //     console.log(`${post}`)
+    // })
+
 </script>
 
 <div>

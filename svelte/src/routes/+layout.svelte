@@ -1,3 +1,12 @@
+<script>
+  import Header from "lib//components/header.svelte";
+  import ScrollMenu from "lib//components/scrollMenu.svelte";
+
+  import {page} from '$app/stores';
+    import TilTops from "lib//components/tilTops.svelte";
+    import Footer from "lib//components/footer.svelte";
+</script>
+
 <svelte:head>
   <title>MagasinE</title>
   <!-- <link rel="icon" href="%sveltekit.assets%/favicon.png" /> -->
@@ -38,5 +47,12 @@
     }
   }
 </style>
+{#key $page}
+<Header/>
+<ScrollMenu/>
+<TilTops/>
+{/key}
 
 <slot />
+
+
