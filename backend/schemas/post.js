@@ -6,6 +6,15 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'Likes',
+      title: 'Current Likes',
+      type: 'number',
+      description: '(Empty = 0)',
+      readOnly: () => true,
+    }),
+
+
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -35,12 +44,22 @@ export default defineType({
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Main Image',
       type: 'image',
       options: {
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'Caption',
+      title: 'Caption',
+      type: 'string',
+      description: 'Describe the picture',
+      options: {
+        hotspot: true,
+      },
+    }),
+
     defineField({
       name: 'categories',
       title: 'Categories',
