@@ -18,7 +18,7 @@
             </ul>
         </div>
 
-        <a href="https://magasine.sanity.studio/" target="_blank" rel="noreferrer" class="adminURL" style="{innerWidth <= 775 ? 'left' : 'right'}: 25vw; top: {innerWidth <= 775 ? '3' : '12'}vw;">
+        <a href="https://magasinelvebakken.sanity.studio/" target="_blank" rel="noreferrer" class="adminURL" style="{innerWidth <= 775 ? 'left' : 'right'}: 25vw; top: {innerWidth <= 775 ? '3' : '12'}vw;">
             Administrator
         </a>
     </div>
