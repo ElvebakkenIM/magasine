@@ -2,7 +2,7 @@
     import Sok from '$lib/components/sok.svelte';
 
     // Bilder
-    import topBg from '$lib/assets/header/-hjem-hovedbilde.png';
+    import topBg from '$lib/assets/header/OverBildeHjem.png';
     import hjem from '$lib/assets/header/-hjem-ikon.png';
     import menyBg from '$lib/assets/header/pc-menyBakgrunn.png';
     import bakLogo from '$lib/assets/header/bakLogo.png';
