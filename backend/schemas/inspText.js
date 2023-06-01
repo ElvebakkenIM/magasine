@@ -29,9 +29,9 @@ export default defineType({
           layout: 'dropdown'
         }
     })
-],
+  ],
 
-preview: {
+  preview: {
     select: {
       title: 'title',
       subtitle: 'page',

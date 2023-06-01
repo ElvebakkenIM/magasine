@@ -9,7 +9,6 @@
 
 
     export let data;
-    console.log(data.about);
     
     let editors = data.editor;
     

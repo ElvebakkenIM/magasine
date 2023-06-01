@@ -9,7 +9,7 @@ const client = sanityClient({
 
   export async function load({ }) {
     const about = await client.fetch(`*[_type == "about"]`);
-    const editors = await client.fetch(`*[_type == "editor" && willShow == true]`);
+    const editors = await client.fetch(`*[_type == "editor"]`);
   
     if (about) {
       if (editors) {
