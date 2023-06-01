@@ -84,7 +84,7 @@
 
 <div class="midItem">
 
-<div style="position:relative">
+<div style="position:relative; width:100%;">
     {#if pType}
     <img src={builder.image(pType.image.asset._ref).url()} class="postType" alt="">
     <div class="pTypeText">{pType.title}</div>
