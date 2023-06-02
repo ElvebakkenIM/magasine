@@ -2,6 +2,7 @@
     import GenererOrd, {getWord} from "./genererOrd.svelte";
     import Footer from "lib//components/footer.svelte";
     import HangmanBokstav from "lib//components/hangmanBokstav.svelte";
+    import HangmanPoengBoks, {lagreScore} from "lib//components/hangmanPoengBoks.svelte";
     
     import B_0 from '$lib/assets/hangman/HangingMan_0.png';
     import B_1 from '$lib/assets/hangman/HangingMan_1.png';
@@ -35,9 +36,9 @@
         for (let bokstav of riktig) {
             igjenIOrdet = igjenIOrdet.replaceAll(bokstav, '');
         }
-        console.log('ORD:', igjenIOrdet)
         if (!igjenIOrdet) {
             vunnet = true;
+            lagreScore(feil.length);
         }
     }
 
@@ -48,9 +49,18 @@
         ordet = getWord();
         vunnet = false;
     }
+
+    function tastTrykket(e) {
+        if (tastaturBokstaver.includes(e.key.toUpperCase())) {
+            skalGjette = e.key.toUpperCase();
+        } else if (e.keyCode == 13) { // trykket enter
+            vunnet || feil.length >= 6 ? reset() : gjettDette();
+        }
+    }
 </script>
 
 <div id="centerGame">
+    <div></div> <!-- Melomrom til venstre -->
     <div id="containGame">
         <div id="bilde"><img src={feil.length == 0 ? B_0 : feil.length == 1 ? B_1 : feil.length == 2 ? B_2 : feil.length == 3 ? B_3 : feil.length == 4 ? B_4 : feil.length == 5 ? B_5 : B_6} alt="{feil.length}/6"/></div>
         
@@ -87,19 +97,26 @@
             {/if}
         </div>
     </div>
+
+    <div>
+        <HangmanPoengBoks/>
+    </div>
 </div>
 
 <Footer/>
 
+
+<svelte:window on:keydown={tastTrykket} />
+
 <style>
     #centerGame {
         width: 100%;
-        display: flex;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
     }
 
     #containGame {
-        width: 50%;
+        width: 100%;
         display: grid;
         grid-template-columns: 75% auto;
     }
