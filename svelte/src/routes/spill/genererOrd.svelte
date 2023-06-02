@@ -5,11 +5,14 @@
         'Skole',
         'MagasinE',
         'Elevråd',
-        'Eksamen'
+        'Eksamen',
+        'Lekser',
+        'Bibiliotek',
+        'Oppgaver'
     ];
 
     export function getWord(){
-        let randomIndex = Math.floor(Math.random() * (words.length-1));
+        let randomIndex = Math.floor(Math.random() * (words.length));
         return words[randomIndex].toUpperCase();
     }
 </script>
