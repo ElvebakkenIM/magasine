@@ -10,6 +10,7 @@
     import Nyeste5paBakka from 'lib//components/nyeste5paBakka.svelte';
     import MoreButton from 'lib//components/moreButton.svelte';
     import TlfNyestArtikkel from 'lib//components/tlf-nyestArtikkel.svelte';
+    import TilHangman from 'lib//components/tilHangman.svelte';
 
     export let data;
 
@@ -56,8 +57,7 @@
     
 </script>
 
-<!--TODO: Forslag til posisjon og utseende til hangman-spillet --> <!-- Lag som komponent -->
-<div style="background-color: red; width:400px; height:300px; position:fixed; right:-1vw; bottom:20%; z-index:10; border-radius:1vw;"></div>
+<TilHangman/>
 
 {#if innerWidth <= 775}
 <TlfNyestArtikkel builder={builder} artikkle={newest} ptypes={postTypes}/>
