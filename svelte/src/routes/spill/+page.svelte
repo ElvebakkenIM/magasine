@@ -33,8 +33,9 @@
     function harVunnet() {
         let igjenIOrdet = ordet;
         for (let bokstav of riktig) {
-            igjenIOrdet = igjenIOrdet.replace(bokstav, '');
+            igjenIOrdet = igjenIOrdet.replaceAll(bokstav, '');
         }
+        console.log('ORD:', igjenIOrdet)
         if (!igjenIOrdet) {
             vunnet = true;
         }
@@ -44,6 +45,7 @@
         riktig = [];
         feil = [];
         skalGjette = '';
+        ordet = getWord();
         vunnet = false;
     }
 </script>
